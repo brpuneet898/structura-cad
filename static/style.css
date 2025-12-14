@@ -1,0 +1,1411 @@
+:root {
+  --color-primary: #8b4513; /* deep brown primary */
+  --color-primary-600: #a0522d; /* light brown accent */
+  --color-accent: #d2b48c;
+  --color-muted: #6f7d89;
+  --color-bg: #f7f9fb;
+  --card-border: #e6eef8;
+  --glass: rgba(255, 255, 255, 0.85);
+  --text-dark: #0f1724;
+}
+/* Base typography */
+html {
+  font-size: 16px;
+}
+body {
+  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial;
+  color: var(--text-dark);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+}
+
+/* Heading scale */
+h1 {
+  font-size: 2.5rem;
+  line-height: 1.05;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+h2 {
+  font-size: 1.625rem;
+  line-height: 1.15;
+  font-weight: 700;
+}
+h3 {
+  font-size: 1.125rem;
+  line-height: 1.2;
+  font-weight: 600;
+}
+h4 {
+  font-size: 1rem;
+  line-height: 1.25;
+  font-weight: 600;
+}
+p,
+li,
+span,
+label,
+input,
+button {
+  font-size: 0.9375rem;
+}
+
+/* Navigation */
+.nav-link {
+  color: var(--color-muted);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.nav-link:hover {
+  color: var(--color-primary);
+}
+
+/* Buttons - primary and secondary polished */
+.btn-primary {
+  background: linear-gradient(
+    180deg,
+    var(--color-primary) 0%,
+    var(--color-primary-600) 100%
+  );
+  border: none;
+  color: white;
+  padding: 0.625rem 0.875rem;
+  font-weight: 700;
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 24px rgba(139, 69, 19, 0.12);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 36px rgba(139, 69, 19, 0.16);
+}
+
+.btn-secondary {
+  background: white;
+  color: var(--color-primary);
+  border: 1px solid var(--card-border);
+  padding: 0.5rem 0.75rem;
+  font-weight: 700;
+  border-radius: 0.75rem;
+}
+.btn-secondary:hover {
+  background: #fdf6f0;
+}
+
+/* Cards */
+.feature-card,
+.upload-card,
+.field-card,
+.metadata-card {
+  background: var(--glass);
+  border: 1px solid var(--card-border);
+  border-radius: 0.75rem;
+}
+.feature-card:hover,
+.upload-card:hover,
+.field-card:hover {
+  box-shadow: 0 12px 36px rgba(139, 69, 19, 0.06);
+  transform: translateY(-6px);
+}
+
+/* Step/summary number */
+.step-number {
+  width: 68px;
+  height: 68px;
+  font-size: 1.125rem;
+}
+
+/* Document History list */
+#docHistory .field-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.75rem;
+}
+#docHistory .text-primary {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+#docHistory .text-xs {
+  color: var(--color-muted);
+}
+
+/* Analysis summary cards */
+.analysis-summary .text-2xl {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.analysis-summary .p-4 {
+  padding: 1rem;
+}
+
+/* Fields grid */
+#fieldsGrid .field-card {
+  border-radius: 0.75rem;
+  padding: 0.9rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+#fieldsGrid .field-name {
+  font-weight: 700;
+  color: var(--color-primary);
+  font-size: 0.95rem;
+}
+#fieldsGrid .field-value {
+  color: #153140;
+  font-size: 0.95rem;
+}
+
+/* Metadata */
+.metadata-card {
+  padding: 1rem;
+}
+
+/* Confidence visuals */
+.confidence-pill {
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+.confidence-bar {
+  background: #fdf6f0;
+  border-radius: 8px;
+  height: 12px;
+}
+.confidence-bar > .fill {
+  background: linear-gradient(90deg, #d2b48c, #a0522d);
+  height: 100%;
+}
+
+/* Chat styling */
+#chatWindow {
+  background: #ffffff;
+  border: 1px solid #f5f0e8;
+  padding: 12px;
+  border-radius: 0.75rem;
+}
+.chat-bubble {
+  padding: 10px 12px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  display: inline-block;
+  max-width: 88%;
+}
+.chat-bubble.ai {
+  background: #fdf6f0;
+  border: 1px solid #f0e6d2;
+  color: var(--text-dark);
+}
+.chat-bubble.user {
+  background: linear-gradient(
+    90deg,
+    var(--color-primary-600),
+    var(--color-primary)
+  );
+  color: #fff;
+  float: right;
+}
+
+/* Utility */
+.muted {
+  color: var(--color-muted);
+}
+
+/* Responsive adjusts */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+  h2 {
+    font-size: 1.25rem;
+  }
+}
+
+/* Primary Button */
+.btn-primary {
+  background: #8b4513; /* Primary Brown */
+  color: white;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+.btn-primary:hover {
+  background: #a0522d; /* Lighter Brown for Hover */
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(160, 82, 45, 0.3); /* Soft brown shadow */
+}
+
+/* Secondary Button */
+.btn-secondary {
+  background: #d2b48c; /* Light Brown Accent */
+  color: #8b4513; /* Dark Brown for contrast */
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+.btn-secondary:hover {
+  background: #c19a6b; /* Slightly darker brown for hover */
+  transform: translateY(-1px);
+}
+
+/* Hero Section */
+.hero-gradient {
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #d2b48c 100%
+  ); /* Smooth gradient from white to light brown */
+}
+
+/* Text Colors */
+.text-primary {
+  color: #8b4513; /* Primary Brown for headings and main text */
+}
+.text-secondary {
+  color: #6f7d89; /* Muted gray-blue for secondary text */
+}
+
+/* Background Accent */
+.bg-light-accent {
+  background: #f8f9fa; /* Very light gray for subtle background areas */
+}
+
+/* Navigation Link */
+.nav-link {
+  color: #6f7d89; /* Muted gray-blue for regular state */
+  transition: color 0.2s ease;
+}
+.nav-link:hover {
+  color: #8b4513; /* Primary Brown for hover state */
+}
+
+/* Feature Cards */
+.feature-card {
+  background: white;
+  border: 1px solid #e2e8f0; /* Light gray border */
+  transition: all 0.3s ease;
+}
+.feature-card:hover {
+  border-color: #8b4513; /* Primary Brown for hover border */
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(139, 69, 19, 0.15); /* Soft brown shadow */
+}
+
+/* Icon Container */
+.icon-container {
+  background: #f8f9fa; /* Light background for icon container */
+  color: #8b4513; /* Primary Brown for icon color */
+  transition: all 0.3s ease;
+}
+
+/* Styling the "How It Works" section */
+#how-it-works {
+  background: #f8fafc; /* Light background for contrast */
+  padding: 5rem 0;
+}
+
+/* Styling the Step Cards */
+.step-card {
+  background: white;
+  padding: 2rem 1.5rem;
+  border-radius: 1rem;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.step-card:hover {
+  background: #fdf6f0; /* Soft light brown on hover */
+  transform: translateY(-10px); /* Slight lifting effect */
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15); /* More prominent shadow */
+}
+
+/* Number Circle (Step Indicator) */
+.step-number {
+  background-color: #8b4513; /* Primary Brown */
+  color: white;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.step-card:hover .step-number {
+  transform: rotate(360deg); /* Rotating the number slightly on hover */
+}
+
+/* Title and Description */
+.step-card h3 {
+  font-size: 1.25rem;
+  color: #2d3748; /* Dark gray for the heading */
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.step-card p {
+  font-size: 1rem;
+  color: #4a5568; /* Muted gray for body text */
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .step-card {
+    padding: 3rem 2rem;
+  }
+
+  .step-card h3 {
+    font-size: 1.5rem;
+  }
+
+  .step-card p {
+    font-size: 1.125rem;
+  }
+}
+
+/* Upload Widget Styles */
+.upload-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(139, 69, 19, 0.1);
+}
+
+.upload-card:hover {
+  box-shadow: 0 8px 25px rgba(139, 69, 19, 0.15);
+}
+
+/* Drop Zone Styles */
+#dropZone {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+#dropZone:hover {
+  background-color: #f8fafc;
+  border-color: #a0522d;
+}
+
+#dropZone.border-brown-500 {
+  border-color: #a0522d !important;
+}
+
+#dropZone.bg-brown-50 {
+  background-color: #fdf6f0 !important;
+}
+
+/* Selected File Display */
+#selectedFile {
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+}
+
+/* Disabled Button State */
+.btn-primary:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-primary:disabled:hover {
+  background: #9ca3af;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Remove File Button */
+#removeFileBtn {
+  transition: all 0.2s ease;
+}
+
+#removeFileBtn:hover {
+  transform: scale(1.1);
+}
+
+/* Smooth transitions for show/hide */
+.hidden {
+  display: none !important;
+}
+
+/* File icon and text styling */
+.upload-card svg {
+  transition: all 0.3s ease;
+}
+
+.upload-card:hover svg {
+  transform: scale(1.05);
+}
+
+/* Field Cards Styles */
+.field-card {
+  transition: all 0.3s ease;
+  border: 1px solid #e2e8f0;
+}
+
+.field-card:hover {
+  border-color: #8b4513;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(139, 69, 19, 0.15);
+}
+
+.field-name {
+  color: #8b4513;
+  font-weight: 600;
+}
+
+.field-value {
+  line-height: 1.5;
+  min-height: 20px;
+}
+
+.edit-btn {
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.edit-btn:hover {
+  background-color: #f8fafc;
+}
+
+.delete-btn {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Field input styles */
+.field-name-input,
+.field-value-input {
+  border: 1px solid #d1d5db;
+  transition: all 0.2s ease;
+}
+
+.field-name-input:focus,
+.field-value-input:focus {
+  outline: none;
+  border-color: #8b4513;
+  box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.1);
+}
+
+/* Analysis results header */
+#analysisResults h2 {
+  color: #8b4513;
+}
+
+/* Responsive grid for field cards */
+@media (max-width: 768px) {
+  #fieldsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  #fieldsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Smooth transitions for show/hide */
+.field-display,
+.field-edit {
+  transition: all 0.3s ease;
+}
+
+/* Button hover effects for field actions */
+.field-card button {
+  transition: all 0.2s ease;
+}
+
+.field-card button:hover {
+  transform: translateY(-1px);
+}
+
+/* -----------------------
+   Analysis page polishing
+   ----------------------- */
+
+/* Container and Column Layout */
+main.analysis-page {
+  background: #f7f9fb;
+  min-height: calc(100vh - 64px);
+  padding: 2rem 0;
+}
+
+.analysis-column {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  height: calc(100vh - 104px);
+  position: sticky;
+  top: 80px;
+  overflow-y: auto;
+}
+
+.analysis-column::-webkit-scrollbar {
+  width: 8px;
+}
+
+.analysis-column::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
+.analysis-column::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.analysis-column::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Document History Column */
+#docHistory {
+  padding: 1.25rem;
+}
+
+#docHistory .field-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  padding: 1rem;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+#docHistory .field-card:hover {
+  transform: translateY(-2px);
+  border-color: #a0522d;
+  background: #f8fafc;
+}
+
+#docHistory .text-primary {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #0f172a;
+}
+
+/* Analysis Column */
+.summary-section {
+  padding: 1.5rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.summary-stat {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+/* Field Cards */
+#fieldsGrid .field-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 1.25rem;
+  transition: all 0.2s ease;
+}
+
+#fieldsGrid .field-name {
+  color: #0f172a;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+#fieldsGrid .field-value {
+  color: #334155;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+/* Confidence Indicator */
+.confidence-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 1rem;
+  background: #fdf6f0;
+  border: 1px solid #e6d3b7;
+  border-radius: 9999px;
+}
+
+.confidence-indicator .label {
+  color: #8b4513;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.confidence-indicator .value {
+  color: #a0522d;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+/* Chat Section */
+/* Column Layout */
+main.analysis-page {
+  height: calc(100vh - 4rem); /* Full height minus navbar */
+}
+
+.scrollable-column {
+  height: 100%;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+.scrollable-column::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollable-column::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollable-column::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 3px;
+}
+
+.scrollable-column::-webkit-scrollbar-thumb:hover {
+  background-color: #94a3b8;
+}
+
+/* Chat Section */
+.chat-section {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 8rem); /* Full height minus navbar and padding */
+  max-height: 100%;
+}
+
+#chatWindow {
+  flex: 1;
+  padding: 1.25rem;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+.chat-message {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.chat-bubble {
+  max-width: 85%;
+  padding: 0.875rem 1rem;
+  border-radius: 12px;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.chat-bubble.ai {
+  background: white;
+  border: 1px solid #e2e8f0;
+  color: #0f172a;
+  margin-right: auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.chat-bubble.user {
+  background: #a0522d;
+  color: white;
+  margin-left: auto;
+}
+
+.chat-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0.75rem;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  color: #166534;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.chat-form {
+  margin-top: 1rem;
+}
+
+.chat-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.9375rem;
+  background: #f8fafc;
+  transition: all 0.2s ease;
+}
+
+.chat-input:focus {
+  outline: none;
+  border-color: #a0522d;
+  box-shadow: 0 0 0 3px rgba(160, 82, 45, 0.1);
+}
+
+/* Section Headers */
+.section-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid #e2e8f0;
+  margin-bottom: 1.5rem;
+}
+
+.section-header h2 {
+  color: #0f172a;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.section-header h3 {
+  color: #0f172a;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.section-header .subtitle {
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  main.analysis-page {
+    padding: 1rem 0;
+  }
+
+  .analysis-column {
+    height: auto;
+    position: static;
+    margin-bottom: 1.5rem;
+  }
+
+  #chatWindow {
+    min-height: 280px;
+    max-height: 400px;
+  }
+
+  .section-header {
+    padding: 1rem;
+  }
+
+  .chat-section {
+    padding: 1rem;
+  }
+}
+
+/* Creative Flowchart Animations */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(160, 82, 45, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(160, 82, 45, 0.6);
+  }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Flowchart specific styles */
+#how-it-works .group:nth-child(1) {
+  animation: slideInFromLeft 0.8s ease-out;
+}
+
+#how-it-works .group:nth-child(2) {
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+#how-it-works .group:nth-child(3) {
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+#how-it-works .group:nth-child(4) {
+  animation: slideInFromRight 0.8s ease-out 0.6s both;
+}
+
+/* Hover effects for flowchart cards */
+#how-it-works .group:hover {
+  animation: float 2s ease-in-out infinite;
+}
+
+/* Gradient text animation */
+.bg-clip-text {
+  background-size: 200% 200%;
+  animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Pulsing arrows */
+#how-it-works .animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Background elements */
+#how-it-works .animate-bounce {
+  animation: bounce 1s infinite;
+}
+
+#how-it-works .animate-ping {
+  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Stats cards hover effect */
+#how-it-works .backdrop-blur-sm:hover {
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+/* Do
+cument History Improvements */
+#docHistory .space-y-3 > div {
+  transition: all 0.2s ease;
+}
+
+#docHistory .space-y-3 > div:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Better text wrapping for document names */
+#docHistory .font-medium {
+  word-break: break-word;
+  line-height: 1.3;
+}
+
+/* Improved button styling */
+#docHistory a[class*="bg-amber-100"] {
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Document History Header */
+#docHistory .section-header {
+  padding: 1rem 1rem 0.5rem 1rem;
+}
+
+#docHistory .section-header h2 {
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+/* Responsive adjustments for document history */
+@media (max-width: 768px) {
+  #docHistory .font-medium {
+    font-size: 0.875rem;
+  }
+
+  #docHistory .text-xs {
+    font-size: 0.75rem;
+  }
+} /* Analy
+sis Page Layout Improvements */
+.analysis-page {
+  min-height: calc(100vh - 4rem);
+}
+
+/* Ensure all columns have the same height */
+.analysis-page > aside,
+.analysis-page > section {
+  height: calc(100vh - 8rem);
+  max-height: calc(100vh - 8rem);
+}
+
+/* Document History specific improvements */
+.analysis-page > aside:first-child .bg-white {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.analysis-page > aside:first-child .overflow-y-auto {
+  flex: 1;
+  min-height: 0;
+}
+
+/* Better scrolling for document history */
+#docHistory {
+  max-height: calc(100vh - 12rem);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+#docHistory::-webkit-scrollbar {
+  width: 6px;
+}
+
+#docHistory::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#docHistory::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 3px;
+}
+
+#docHistory::-webkit-scrollbar-thumb:hover {
+  background-color: #94a3b8;
+}
+
+/* Enhanced document history cards */
+#docHistory .p-3 {
+  transition: all 0.2s ease;
+}
+
+#docHistory .p-3:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .analysis-page > aside,
+  .analysis-page > section {
+    height: auto;
+    max-height: none;
+  }
+
+  .analysis-page > aside:first-child .bg-white {
+    height: auto;
+  }
+} /* 
+Document History Section Improvements */
+#docHistory {
+  max-height: 500px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+#docHistory::-webkit-scrollbar {
+  width: 6px;
+}
+
+#docHistory::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#docHistory::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 3px;
+}
+
+#docHistory::-webkit-scrollbar-thumb:hover {
+  background-color: #94a3b8;
+}
+
+/* Document History Cards */
+#docHistory .p-3 {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+#docHistory .p-3:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* View button styling */
+#docHistory a[class*="bg-amber-100"] {
+  transition: all 0.2s ease;
+  font-weight: 600;
+}
+
+#docHistory a[class*="bg-amber-100"]:hover {
+  transform: scale(1.05);
+}
+
+/* Better text handling */
+#docHistory .font-medium {
+  word-break: break-word;
+  hyphens: auto;
+}
+/* Distinct Scrollbars for Each Column */
+.history-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #f59e0b #fef3c7; /* Amber scrollbar for history */
+}
+
+.history-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.history-scrollbar::-webkit-scrollbar-track {
+  background: #fef3c7; /* Light amber track */
+  border-radius: 4px;
+}
+
+.history-scrollbar::-webkit-scrollbar-thumb {
+  background: #f59e0b; /* Amber thumb */
+  border-radius: 4px;
+}
+
+.history-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #d97706; /* Darker amber on hover */
+}
+
+.bom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #10b981 #d1fae5; /* Green scrollbar for BOM */
+}
+
+.bom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.bom-scrollbar::-webkit-scrollbar-track {
+  background: #d1fae5; /* Light green track */
+  border-radius: 4px;
+}
+
+.bom-scrollbar::-webkit-scrollbar-thumb {
+  background: #10b981; /* Green thumb */
+  border-radius: 4px;
+}
+
+.bom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #059669; /* Darker green on hover */
+}
+
+.extraction-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #8b4513 #f3e8d3; /* Brown scrollbar for extraction */
+}
+
+.extraction-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.extraction-scrollbar::-webkit-scrollbar-track {
+  background: #f3e8d3; /* Light brown track */
+  border-radius: 4px;
+}
+
+.extraction-scrollbar::-webkit-scrollbar-thumb {
+  background: #8b4513; /* Brown thumb */
+  border-radius: 4px;
+}
+
+.extraction-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #a0522d; /* Lighter brown on hover */
+}
+
+/* Resizable Column Layout */
+.analysis-page {
+  height: calc(100vh - 4rem);
+}
+
+.resizable-container {
+  height: calc(100vh - 8rem);
+  max-height: calc(100vh - 8rem);
+  display: flex;
+  align-items: stretch;
+}
+
+.resizable-panel {
+  height: 100%;
+  flex-shrink: 0;
+  flex-grow: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Resize Handles */
+.resize-handle {
+  width: 8px;
+  height: 100%;
+  cursor: col-resize;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.resize-handle:hover {
+  background: rgba(139, 69, 19, 0.1);
+}
+
+.resize-line {
+  width: 2px;
+  height: 60px;
+  background: #cbd5e1;
+  border-radius: 2px;
+  transition: all 0.2s ease;
+}
+
+.resize-handle:hover .resize-line {
+  background: #8b4513;
+  height: 80px;
+  width: 3px;
+}
+
+.resize-handle:active .resize-line {
+  background: #a0522d;
+  height: 100px;
+  width: 4px;
+}
+
+/* Resize cursor during drag */
+.resizing {
+  cursor: col-resize !important;
+}
+
+.resizing * {
+  cursor: col-resize !important;
+  user-select: none !important;
+  pointer-events: none !important;
+}
+
+/* Panel minimum widths */
+.resizable-panel[data-panel="history"] {
+  min-width: 180px;
+  max-width: 400px;
+}
+
+.resizable-panel[data-panel="bom"] {
+  min-width: 250px;
+  max-width: 60%;
+}
+
+.resizable-panel[data-panel="extraction"] {
+  min-width: 300px;
+}
+
+/* Enhanced Chat Interface */
+.chat-bubble.ai {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  border: 1px solid #cbd5e1;
+  position: relative;
+}
+
+.chat-bubble.ai::before {
+  content: "🤖";
+  position: absolute;
+  top: -8px;
+  left: 12px;
+  background: white;
+  padding: 2px 6px;
+  border-radius: 12px;
+  font-size: 12px;
+  border: 1px solid #cbd5e1;
+}
+
+.chat-bubble.user {
+  background: linear-gradient(135deg, #a0522d 0%, #8b4513 100%);
+  margin-left: auto;
+  position: relative;
+}
+
+.chat-bubble.user::before {
+  content: "👤";
+  position: absolute;
+  top: -8px;
+  right: 12px;
+  background: white;
+  padding: 2px 6px;
+  border-radius: 12px;
+  font-size: 12px;
+  border: 1px solid #cbd5e1;
+}
+
+/* Typing indicator animation */
+.typing-indicator .animate-bounce {
+  animation: bounce 1.4s infinite ease-in-out;
+}
+
+.typing-indicator .animate-bounce:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-indicator .animate-bounce:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* Quick replies styling */
+.quick-replies button {
+  transition: all 0.2s ease;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.quick-replies button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(160, 82, 45, 0.3);
+}
+
+/* Chat status indicator */
+.chat-status {
+  background: linear-gradient(90deg, #f0fdf4 0%, #dcfce7 100%);
+  border: 1px solid #bbf7d0;
+}
+
+/* Enhanced chat window */
+#chatWindow {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid #e2e8f0;
+}
+
+/* Better message spacing */
+.chat-message {
+  margin-bottom: 1rem;
+}
+
+.chat-message:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive chat improvements */
+@media (max-width: 768px) {
+  .chat-bubble {
+    max-width: 95%;
+    font-size: 0.875rem;
+  }
+
+  .quick-replies {
+    flex-direction: column;
+  }
+
+  .quick-replies button {
+    width: 100%;
+    text-align: left;
+  }
+}
+/* Better Chat Message Formatting */
+.chat-bubble {
+  line-height: 1.5;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.chat-bubble strong {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.chat-bubble em {
+  font-style: italic;
+  color: #4b5563;
+}
+
+.chat-bubble br {
+  margin: 0.25rem 0;
+}
+
+/* AI message specific formatting */
+.chat-bubble.ai {
+  font-size: 0.9rem;
+}
+
+.chat-bubble.ai strong {
+  color: #8b4513;
+  font-weight: 600;
+}
+
+/* User message formatting */
+.chat-bubble.user {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Better spacing for lists in chat */
+.chat-bubble ul {
+  margin: 0.5rem 0;
+  padding-left: 1rem;
+}
+
+.chat-bubble li {
+  margin: 0.25rem 0;
+}
+
+/* Improve readability */
+.chat-message {
+  margin-bottom: 1rem;
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

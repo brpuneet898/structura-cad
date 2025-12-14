@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analysis - CDPA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" />
+  </head>
+  <body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex-shrink-0">
+            <a href="/" class="flex flex-col">
+              <h1 class="text-xl font-bold text-primary">CDPA</h1>
+              <p class="text-xs text-gray-600 -mt-1">CAD Document Processor</p>
+            </a>
+          </div>
+          <div class="block">
+            <div class="ml-10 flex items-baseline space-x-8">
+              <a href="/" class="text-gray-600 hover:text-primary text-sm font-medium transition-colors">Home</a>
+              <a href="/#how-it-works" class="text-gray-600 hover:text-primary text-sm font-medium transition-colors">How It Works</a>
+              <a href="/contact" class="text-gray-600 hover:text-primary text-sm font-medium transition-colors">Contact</a>
+            </div>
+          </div>
+          <div class="flex items-center">
+            <button class="btn-primary px-4 py-2 rounded-lg text-sm font-medium">
+              Get Started
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="analysis-page max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="resizable-container flex gap-2 h-full">
+        <!-- Left column: Document History -->
+        <div class="resizable-panel" data-panel="history">
+          <div class="bg-white rounded-xl shadow-sm h-full flex flex-col">
+            <header class="section-header flex-shrink-0">
+              <h2>Document History</h2>
+              <div class="subtitle">Recently processed files</div>
+            </header>
+            
+            <div class="flex-1 p-4 overflow-hidden">
+              <div id="docHistory" class="space-y-3 h-full overflow-y-auto history-scrollbar">
+                {% for u in uploads %}
+                <div class="p-3 rounded-lg bg-gray-50 hover:bg-amber-50 transition-colors border border-gray-100 hover:border-amber-200 hover:shadow-md">
+                  <div class="space-y-2">
+                    <div class="font-medium text-gray-900 text-sm leading-tight break-words">{{ u.name }}</div>
+                    <div class="flex items-center justify-between">
+                      <div class="text-xs text-gray-500">Recently uploaded</div>
+                      <a href="/analysis/{{ u.name }}" 
+                         class="text-xs font-medium text-amber-700 hover:text-amber-800 bg-amber-100 hover:bg-amber-200 px-2 py-1 rounded transition-colors whitespace-nowrap">
+                        View
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                {% else %}
+                <div class="text-sm text-gray-500 p-6 text-center bg-gray-50 rounded-lg">
+                  <svg class="w-12 h-12 mx-auto mb-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                  </svg>
+                  <div class="font-medium text-gray-700 mb-1">No recent documents</div>
+                  <div class="text-xs text-gray-500">Upload a file to get started</div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Resize handle 1 -->
+        <div class="resize-handle" data-direction="horizontal">
+          <div class="resize-line"></div>
+        </div>
+
+        <!-- Middle column: Bill of Materials -->
+        <div class="resizable-panel" data-panel="bom">
+          <div class="bg-white rounded-xl shadow-sm h-full flex flex-col">
+            <header class="section-header flex-shrink-0">
+              <h2>Bill of Materials</h2>
+              <div class="subtitle">Complete BOM extraction</div>
+            </header>
+            <div id="bomLiveStatus" class="text-xs text-gray-500 px-6 pb-3 flex-shrink-0">
+              Waiting for BOM extraction...
+            </div>
+            <div id="bomResults" class="flex-shrink-0"></div>
+            <div class="bom-section flex-1 p-6 overflow-hidden">
+              {% if analysis.bom_items and analysis.bom_items|length > 0 %}
+                <div class="h-full overflow-y-auto bom-scrollbar">
+                  <table class="min-w-full text-sm border border-gray-300 rounded-lg">
+                    <thead class="bg-amber-100 sticky top-0">
+                      <tr>
+                        {% for col in analysis.bom_items[0].keys() %}
+                          <th class="px-3 py-2 border border-gray-300 text-left font-semibold text-gray-800">
+                            {{ col | replace("_", " ") | capitalize }}
+                          </th>
+                        {% endfor %}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for row in analysis.bom_items %}
+                        <tr class="hover:bg-amber-50">
+                          {% for val in row.values() %}
+                            <td class="px-3 py-2 border border-gray-300 text-gray-700">{{ val }}</td>
+                          {% endfor %}
+                        </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+                <div class="mt-4 flex-shrink-0">
+                  <button onclick="exportBOM()" 
+                          class="w-full px-3 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-lg transition-colors">
+                    Export BOM to CSV
+                  </button>
+                </div>
+              {% else %}
+                <div class="flex flex-col h-full">
+                  <div class="mb-4 flex-shrink-0">
+                    <button id="extractBomBtn" onclick="extractBOM()" 
+                            class="w-full px-4 py-3 bg-amber-600 hover:bg-amber-700 text-white font-medium rounded-lg transition-colors">
+                      Extract Complete BOM
+                    </button>
+                  </div>
+
+                  {% if analysis.bom_raw %}
+                    <div class="bg-gray-50 border border-gray-200 rounded-lg p-4 flex-1 overflow-y-auto bom-scrollbar text-left">
+                      <h4 class="text-sm font-semibold text-gray-800 mb-2">Raw BOM Output (Debug)</h4>
+                      <pre class="text-xs text-gray-600 whitespace-pre-wrap">{{ analysis.bom_raw[:1500] }}{% if analysis.bom_raw|length > 1500 %}...{% endif %}</pre>
+                    </div>
+                  {% else %}
+                    <div class="text-center text-gray-500 py-8 flex-1 flex flex-col justify-center">
+                      <p class="text-sm font-medium">No BOM detected yet</p>
+                      <p class="text-xs mt-1">Click above to extract BOM</p>
+                    </div>
+                  {% endif %}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+        <!-- Resize handle 2 -->
+        <div class="resize-handle" data-direction="horizontal">
+          <div class="resize-line"></div>
+        </div>
+
+        <!-- Right column: Document Viewer & Analysis Details -->
+        <div class="resizable-panel" data-panel="extraction">
+          <div class="bg-white rounded-xl shadow-sm h-full flex flex-col">
+            <div class="flex-1 overflow-y-auto extraction-scrollbar">
+        <div class="space-y-6">
+          <!-- Document Viewer Card -->
+          <div class="bg-white rounded-xl shadow-sm">
+            <header class="section-header">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h2>Document Viewer</h2>
+                  <div class="subtitle">File: {{ filename }}</div>
+                </div>
+                <div class="confidence-indicator">
+                  <span class="label">Confidence</span>
+                  <span class="value">{{ metadata.confidence or '—' }}%</span>
+                </div>
+              </div>
+            </header>
+
+            <div class="p-6">
+              <div class="text-center">
+                <a href="{{ url_for('uploaded_file', filename=filename) }}" 
+                   target="_blank"
+                   class="inline-flex items-center px-6 py-3 btn-primary text-white font-medium rounded-lg transition-colors">
+                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                  </svg>
+                  View PDF in New Tab
+                </a>
+                <p class="text-sm text-gray-500 mt-2">Click to open the original document</p>
+              </div>
+            </div>
+          </div>
+
+        <!-- Extracted Fields - Organized Sections -->
+        <div class="bg-white rounded-xl shadow-sm">
+          <header class="section-header">
+            <h2>Extracted Information</h2>
+            <div class="subtitle">Organized analysis of document content</div>
+          </header>
+          
+          <div class="p-6">
+            <!-- Section A: Basic Document Information -->
+            <div class="mb-8">
+              <div class="flex items-center mb-4">
+                <div class="w-8 h-8 bg-amber-600 text-white rounded-full flex items-center justify-center font-bold text-sm mr-3">A</div>
+                <div>
+                  <h3 class="text-lg font-semibold text-gray-900">Basic Document Information</h3>
+                  <p class="text-sm text-gray-600">Standardized for our Catalog & Summary Information</p>
+                </div>
+              </div>
+              <div class="bg-amber-50 rounded-lg p-4">
+                <div class="space-y-3" id="sectionA">
+                  <!-- Fields will be populated here -->
+                </div>
+                <button onclick="addFieldToSection('A')" class="mt-3 text-sm text-amber-600 hover:text-amber-800 font-medium">
+                  + Add Document Info Field
+                </button>
+              </div>
+            </div>
+
+            <!-- Section B: Basic Metadata -->
+            <div class="mb-8">
+              <div class="flex items-center mb-4">
+                <div class="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-bold text-sm mr-3">B</div>
+                <div>
+                  <h3 class="text-lg font-semibold text-gray-900">Basic Metadata</h3>
+                  <p class="text-sm text-gray-600">Who edited, when, departments, etc. - Details</p>
+                </div>
+              </div>
+              <div class="bg-green-50 rounded-lg p-4">
+                <div class="space-y-3" id="sectionB">
+                  <!-- Fields will be populated here -->
+                </div>
+                <button onclick="addFieldToSection('B')" class="mt-3 text-sm text-green-600 hover:text-green-800 font-medium">
+                  + Add Metadata Field
+                </button>
+              </div>
+            </div>
+
+            <!-- Section C: Textual Information -->
+            <div class="mb-8">
+              <div class="flex items-center mb-4">
+                <div class="w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-sm mr-3">C</div>
+                <div>
+                  <h3 class="text-lg font-semibold text-gray-900">Textual Information</h3>
+                  <p class="text-sm text-gray-600">Notes, Tables, Annotations, Design Details, Comments</p>
+                </div>
+              </div>
+              <div class="bg-purple-50 rounded-lg p-4">
+                <div class="space-y-3" id="sectionC">
+                  <!-- Fields will be populated here -->
+                </div>
+                <button onclick="addFieldToSection('C')" class="mt-3 text-sm text-purple-600 hover:text-purple-800 font-medium">
+                  + Add Textual Info Field
+                </button>
+              </div>
+            </div>
+
+            <!-- Section D: Drawing Details -->
+            <div class="mb-8">
+              <div class="flex items-center mb-4">
+                <div class="w-8 h-8 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-sm mr-3">D</div>
+                <div>
+                  <h3 class="text-lg font-semibold text-gray-900">Drawing Details</h3>
+                  <p class="text-sm text-gray-600">Measurements, Units, Notations, Part Information</p>
+                </div>
+              </div>
+              <div class="bg-orange-50 rounded-lg p-4">
+                <div class="space-y-3" id="sectionD">
+                  <!-- Fields will be populated here -->
+                </div>
+                <button onclick="addFieldToSection('D')" class="mt-3 text-sm text-orange-600 hover:text-orange-800 font-medium">
+                  + Add Drawing Detail Field
+                </button>
+              </div>
+            </div>
+
+            <!-- Uncategorized Fields -->
+            <div class="mb-8" id="uncategorizedSection" style="display: none;">
+              <div class="flex items-center mb-4">
+                <div class="w-8 h-8 bg-gray-600 text-white rounded-full flex items-center justify-center font-bold text-sm mr-3">?</div>
+                <div>
+                  <h3 class="text-lg font-semibold text-gray-900">Uncategorized Fields</h3>
+                  <p class="text-sm text-gray-600">Fields that need to be categorized</p>
+                </div>
+              </div>
+              <div class="bg-gray-50 rounded-lg p-4">
+                <div class="space-y-3" id="sectionUncategorized">
+                  <!-- Uncategorized fields will be populated here -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Global Actions -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6 border-t border-gray-200">
+              <button onclick="addNewField()" class="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-lg transition-colors">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                </svg>
+                Add New Field
+              </button>
+
+              <button id="saveAllBtn" onclick="saveAllChanges()" class="inline-flex items-center px-6 py-3 btn-primary text-white font-medium rounded-lg transition-colors shadow-lg hover:shadow-xl">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"></path>
+                </svg>
+                Save All Changes to JSON
+              </button>
+            </div>
+          </div>
+            <!-- Document Viewer Card -->
+            <div class="bg-white rounded-xl shadow-sm mb-6">
+              <header class="section-header">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <h2>Document Viewer</h2>
+                    <div class="subtitle">File: {{ filename }}</div>
+                  </div>
+                  <div class="confidence-indicator">
+                    <span class="label">Confidence</span>
+                    <span class="value">{{ metadata.confidence or '—' }}%</span>
+                  </div>
+                </div>
+              </header>
+
+              <div class="p-6">
+                <div class="text-center">
+                  <a href="{{ url_for('uploaded_file', filename=filename) }}" 
+                     target="_blank"
+                     class="inline-flex items-center px-6 py-3 btn-primary text-white font-medium rounded-lg transition-colors">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                    </svg>
+                    View PDF in New Tab
+                  </a>
+                  <p class="text-sm text-gray-500 mt-2">Click to open the original document</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Extracted Fields - Organized Sections -->
+            <div class="bg-white rounded-xl shadow-sm mb-6">
+              <header class="section-header">
+                <h2>Extracted Information</h2>
+                <div class="subtitle">Organized analysis of document content</div>
+              </header>
+              
+              <div class="p-6">
+                <!-- Section A: Basic Document Information -->
+                <div class="mb-8">
+                  <div class="flex items-center mb-4">
+                    <div class="w-8 h-8 bg-amber-600 text-white rounded-full flex items-center justify-center font-bold text-sm mr-3">A</div>
+                    <div>
+                      <h3 class="text-lg font-semibold text-gray-900">Basic Document Information</h3>
+                      <p class="text-sm text-gray-600">Standardized for our Catalog & Summary Information</p>
+                    </div>
+                  </div>
+                  <div class="bg-amber-50 rounded-lg p-4">
+                    <div class="space-y-3" id="sectionA">
+                      <!-- Fields will be populated here -->
+                    </div>
+                    <button onclick="addFieldToSection('A')" class="mt-3 text-sm text-amber-600 hover:text-amber-800 font-medium">
+                      + Add Document Info Field
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Section B: Basic Metadata -->
+                <div class="mb-8">
+                  <div class="flex items-center mb-4">
+                    <div class="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-bold text-sm mr-3">B</div>
+                    <div>
+                      <h3 class="text-lg font-semibold text-gray-900">Basic Metadata</h3>
+                      <p class="text-sm text-gray-600">Who edited, when, departments, etc. - Details</p>
+                    </div>
+                  </div>
+                  <div class="bg-green-50 rounded-lg p-4">
+                    <div class="space-y-3" id="sectionB">
+                      <!-- Fields will be populated here -->
+                    </div>
+                    <button onclick="addFieldToSection('B')" class="mt-3 text-sm text-green-600 hover:text-green-800 font-medium">
+                      + Add Metadata Field
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Section C: Textual Information -->
+                <div class="mb-8">
+                  <div class="flex items-center mb-4">
+                    <div class="w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-sm mr-3">C</div>
+                    <div>
+                      <h3 class="text-lg font-semibold text-gray-900">Textual Information</h3>
+                      <p class="text-sm text-gray-600">Notes, Tables, Annotations, Design Details, Comments</p>
+                    </div>
+                  </div>
+                  <div class="bg-purple-50 rounded-lg p-4">
+                    <div class="space-y-3" id="sectionC">
+                      <!-- Fields will be populated here -->
+                    </div>
+                    <button onclick="addFieldToSection('C')" class="mt-3 text-sm text-purple-600 hover:text-purple-800 font-medium">
+                      + Add Textual Info Field
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Section D: Drawing Details -->
+                <div class="mb-8">
+                  <div class="flex items-center mb-4">
+                    <div class="w-8 h-8 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-sm mr-3">D</div>
+                    <div>
+                      <h3 class="text-lg font-semibold text-gray-900">Drawing Details</h3>
+                      <p class="text-sm text-gray-600">Measurements, Units, Notations, Part Information</p>
+                    </div>
+                  </div>
+                  <div class="bg-orange-50 rounded-lg p-4">
+                    <div class="space-y-3" id="sectionD">
+                      <!-- Fields will be populated here -->
+                    </div>
+                    <button onclick="addFieldToSection('D')" class="mt-3 text-sm text-orange-600 hover:text-orange-800 font-medium">
+                      + Add Drawing Detail Field
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Uncategorized Fields -->
+                <div class="mb-8" id="uncategorizedSection" style="display: none;">
+                  <div class="flex items-center mb-4">
+                    <div class="w-8 h-8 bg-gray-600 text-white rounded-full flex items-center justify-center font-bold text-sm mr-3">?</div>
+                    <div>
+                      <h3 class="text-lg font-semibold text-gray-900">Uncategorized Fields</h3>
+                      <p class="text-sm text-gray-600">Fields that need to be categorized</p>
+                    </div>
+                  </div>
+                  <div class="bg-gray-50 rounded-lg p-4">
+                    <div class="space-y-3" id="sectionUncategorized">
+                      <!-- Uncategorized fields will be populated here -->
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Global Actions -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6 border-t border-gray-200">
+                  <button onclick="addNewField()" class="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-lg transition-colors">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                    </svg>
+                    Add New Field
+                  </button>
+
+                  <button id="saveAllBtn" onclick="saveAllChanges()" class="inline-flex items-center px-6 py-3 btn-primary text-white font-medium rounded-lg transition-colors shadow-lg hover:shadow-xl">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"></path>
+                    </svg>
+                    Save All Changes to JSON
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Document Metadata -->
+            <div class="bg-white rounded-xl shadow-sm">
+              <header class="section-header">
+                <h2>Document Metadata</h2>
+                <div class="subtitle">Technical details and processing information</div>
+              </header>
+              
+              <div class="p-6">
+                <div class="grid grid-cols-2 gap-8">
+                  <div class="space-y-4">
+                    <h3 class="font-medium text-gray-900">File Information</h3>
+                    <dl class="space-y-2">
+                      <div class="flex justify-between">
+                        <dt class="text-sm text-gray-500">File Size</dt>
+                        <dd class="text-sm font-medium">{{ (metadata.file_size / (1024*1024))|round(2) }} MB</dd>
+                      </div>
+                      <div class="flex justify-between">
+                        <dt class="text-sm text-gray-500">Pages</dt>
+                        <dd class="text-sm font-medium">{{ extra.pages or '—' }}</dd>
+                      </div>
+                      <div class="flex justify-between">
+                        <dt class="text-sm text-gray-500">Format</dt>
+                        <dd class="text-sm font-medium">{{ filename.rsplit('.', 1)[1].upper() }}</dd>
+                      </div>
+                      <div class="flex justify-between">
+                        <dt class="text-sm text-gray-500">Fields Found</dt>
+                        <dd class="text-sm font-medium">{{ analysis.fields|length }}</dd>
+                      </div>
+                    </dl>
+                  </div>
+                  
+                  <div class="space-y-4">
+                    <h3 class="font-medium text-gray-900">Processing Details</h3>
+                    <dl class="space-y-2">
+                      <div class="flex justify-between">
+                        <dt class="text-sm text-gray-500">Processing Time</dt>
+                        <dd class="text-sm font-medium">{{ metadata.processing_time_seconds }} seconds</dd>
+                      </div>
+                      <div class="flex justify-between">
+                        <dt class="text-sm text-gray-500">AI Model</dt>
+                        <dd class="text-sm font-medium">Gemini 2.0 Flash</dd>
+                      </div>
+                      <div class="flex justify-between">
+                        <dt class="text-sm text-gray-500">Confidence</dt>
+                        <dd class="text-sm font-medium">{{ metadata.confidence }}%</dd>
+                      </div>
+                      <div class="flex justify-between">
+                        <dt class="text-sm text-gray-500">Language</dt>
+                        <dd class="text-sm font-medium">{{ metadata.language }}</dd>
+                      </div>
+                    </dl>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      // Field editing functionality
+      let fieldsData = {{ analysis.fields | tojson }};
+      let hasUnsavedChanges = false;
+      let fieldCounter = 0;
+      let bomData = [];
+
+      console.log('Fields data loaded:', fieldsData);
+
+      // Field categorization keywords
+      const categoryKeywords = {
+        'A': ['drawing number', 'part number', 'document id', 'doc name', 'version', 'revision', 'title', 'name', 'id', 'number', 'components', 'parts count', 'assembly', 'catalog', 'item', 'model'],
+        'B': ['created', 'modified', 'author', 'designer', 'engineer', 'department', 'company', 'date', 'time', 'approved', 'checked', 'drawn by', 'edited', 'updated', 'organization'],
+        'C': ['notes', 'comments', 'description', 'text', 'annotation', 'table', 'history', 'remarks', 'specification', 'material', 'finish', 'treatment', 'composition', 'chemical', 'properties'],
+        'D': ['dimension', 'measurement', 'length', 'width', 'height', 'diameter', 'radius', 'angle', 'tolerance', 'units', 'mm', 'inches', 'scale', 'coordinates', 'position', 'location']
+      };
+
+      // Resizable Columns Functionality
+      let isResizing = false;
+      let currentHandle = null;
+      let startX = 0;
+      let startWidths = [];
+
+      function initializeResizableColumns() {
+        const handles = document.querySelectorAll('.resize-handle');
+        const panels = document.querySelectorAll('.resizable-panel');
+
+        handles.forEach((handle, index) => {
+          handle.addEventListener('mousedown', (e) => {
+            isResizing = true;
+            currentHandle = handle;
+            startX = e.clientX;
+            
+            // Store initial widths
+            startWidths = Array.from(panels).map(panel => panel.offsetWidth);
+            
+            document.body.classList.add('resizing');
+            e.preventDefault();
+          });
+        });
+
+        document.addEventListener('mousemove', (e) => {
+          if (!isResizing || !currentHandle) return;
+
+          const handleIndex = Array.from(handles).indexOf(currentHandle);
+          const leftPanel = panels[handleIndex];
+          const rightPanel = panels[handleIndex + 1];
+          
+          if (!leftPanel || !rightPanel) return;
+
+          const deltaX = e.clientX - startX;
+          const container = leftPanel.parentElement;
+          const containerWidth = container.offsetWidth;
+          
+          // Calculate available width (subtract handle widths and gaps)
+          const handleWidth = 8; // width of each handle
+          const gapWidth = 8; // gap between panels  
+          const totalHandleAndGapWidth = (handles.length * handleWidth) + ((panels.length - 1) * gapWidth);
+          const availableWidth = containerWidth - totalHandleAndGapWidth;
+          
+          // Get current widths as percentages of available width
+          const currentWidths = Array.from(panels).map(panel => {
+            const currentPixelWidth = panel.offsetWidth;
+            return (currentPixelWidth / availableWidth) * 100;
+          });
+          
+          // Calculate change as percentage
+          const deltaPercent = (deltaX / availableWidth) * 100;
+          
+          // Apply change to adjacent panels
+          let newWidths = [...currentWidths];
+          newWidths[handleIndex] = currentWidths[handleIndex] + deltaPercent;
+          newWidths[handleIndex + 1] = currentWidths[handleIndex + 1] - deltaPercent;
+          
+          // Apply constraints (convert min-width from px to percentage)
+          const constraints = [
+            { min: (180 / availableWidth) * 100, max: (400 / availableWidth) * 100 }, // history
+            { min: (250 / availableWidth) * 100, max: 60 }, // bom
+            { min: (300 / availableWidth) * 100, max: 100 } // extraction
+          ];
+          
+          // Clamp to constraints
+          newWidths[handleIndex] = Math.max(
+            constraints[handleIndex].min, 
+            Math.min(constraints[handleIndex].max, newWidths[handleIndex])
+          );
+          
+          newWidths[handleIndex + 1] = Math.max(
+            constraints[handleIndex + 1].min, 
+            Math.min(constraints[handleIndex + 1].max, newWidths[handleIndex + 1])
+          );
+          
+          // Ensure total is 100%
+          const total = newWidths.reduce((sum, width) => sum + width, 0);
+          if (total !== 100) {
+            const factor = 100 / total;
+            newWidths = newWidths.map(width => width * factor);
+          }
+          
+          // Apply new widths as pixels
+          panels.forEach((panel, index) => {
+            const newPixelWidth = (newWidths[index] / 100) * availableWidth;
+            panel.style.width = `${newPixelWidth}px`;
+            panel.style.flexShrink = '0';
+            panel.style.flexGrow = '0';
+          });
+        });
+
+        document.addEventListener('mouseup', () => {
+          if (isResizing) {
+            isResizing = false;
+            currentHandle = null;
+            document.body.classList.remove('resizing');
+            
+            // Save panel widths to localStorage
+            const widths = Array.from(panels).map(panel => ({
+              panel: panel.dataset.panel,
+              width: panel.offsetWidth
+            }));
+            localStorage.setItem('panelWidths', JSON.stringify(widths));
+          }
+        });
+
+        // Set initial widths and restore saved widths
+        const container = document.querySelector('.resizable-container');
+        const containerWidth = container.offsetWidth;
+        const handleWidth = 8;
+        const gapWidth = 8;
+        const totalHandleAndGapWidth = (handles.length * handleWidth) + ((panels.length - 1) * gapWidth);
+        const availableWidth = containerWidth - totalHandleAndGapWidth;
+        
+        const savedWidths = localStorage.getItem('panelWidths');
+        if (savedWidths) {
+          try {
+            const widths = JSON.parse(savedWidths);
+            widths.forEach(({ panel, width }) => {
+              const panelElement = document.querySelector(`[data-panel="${panel}"]`);
+              if (panelElement) {
+                panelElement.style.width = `${width}px`;
+                panelElement.style.flexShrink = '0';
+                panelElement.style.flexGrow = '0';
+              }
+            });
+          } catch (e) {
+            console.log('Could not restore panel widths');
+            // Set default widths if restore fails
+            setDefaultWidths();
+          }
+        } else {
+          setDefaultWidths();
+        }
+        
+        function setDefaultWidths() {
+          // Default percentages: 20%, 40%, 40%
+          const defaultWidths = [0.2, 0.4, 0.4];
+          panels.forEach((panel, index) => {
+            const width = availableWidth * defaultWidths[index];
+            panel.style.width = `${width}px`;
+            panel.style.flexShrink = '0';
+            panel.style.flexGrow = '0';
+          });
+        }
+      }
+
+      // Initialize the categorized display
+      function initializeCategorizedFields() {
+        console.log('Initializing categorized fields...');
+        // Add category property to existing fields if not present
+        fieldsData.forEach((field, index) => {
+          if (!field.category) {
+            field.category = categorizeField(field.name, field.value);
+          }
+          field.id = field.id || `field_${fieldCounter++}`;
+        });
+        
+        // Populate sections
+        populateAllSections();
+      }
+
+      function categorizeField(name, value) {
+        const searchText = (name + ' ' + value).toLowerCase();
+        
+        for (const [category, keywords] of Object.entries(categoryKeywords)) {
+          if (keywords.some(keyword => searchText.includes(keyword))) {
+            return category;
+          }
+        }
+        
+        return 'Uncategorized';
+      }
+
+      function populateAllSections() {
+        console.log('Populating all sections...');
+        // Clear all sections
+        ['A', 'B', 'C', 'D', 'Uncategorized'].forEach(section => {
+          const container = document.getElementById(`section${section}`);
+          if (container) container.innerHTML = '';
+        });
+
+        // Populate fields into their categories
+        fieldsData.forEach((field, index) => {
+          const section = field.category || 'Uncategorized';
+          addFieldToSectionDOM(field, index, section);
+        });
+
+        // Show/hide uncategorized section
+        const uncategorizedFields = fieldsData.filter(f => f.category === 'Uncategorized');
+        const uncategorizedSection = document.getElementById('uncategorizedSection');
+        if (uncategorizedSection) {
+          uncategorizedSection.style.display = uncategorizedFields.length > 0 ? 'block' : 'none';
+        }
+      }
+
+      function addFieldToSectionDOM(field, index, section) {
+        const container = document.getElementById(`section${section}`);
+        if (!container) return;
+
+        const fieldHTML = createCategorizedFieldHTML(field, index, section);
+        container.insertAdjacentHTML('beforeend', fieldHTML);
+      }
+
+      function createCategorizedFieldHTML(field, index, section) {
+        const sectionColors = {
+          'A': 'amber',
+          'B': 'green', 
+          'C': 'purple',
+          'D': 'orange',
+          'Uncategorized': 'gray'
+        };
+        
+        const color = sectionColors[section] || 'gray';
+        
+        return `
+          <div class="bg-white border border-${color}-200 hover:border-${color}-300 rounded-lg p-3 transition-colors field-item" data-field-index="${index}" data-field-id="${field.id}">
+            <div class="field-display">
+              <div class="flex items-start justify-between gap-3">
+                <div class="flex-1 min-w-0">
+                  <div class="text-sm font-semibold text-gray-900 field-name-display mb-1">${field.name}</div>
+                  <div class="text-sm text-gray-700 field-value-display break-words">${field.value}</div>
+                </div>
+                <div class="flex items-center space-x-1 flex-shrink-0">
+                  <button onclick="editField(${index})" class="text-${color}-600 hover:text-${color}-800 p-1 rounded transition-colors" title="Edit">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                    </svg>
+                  </button>
+                  <button onclick="deleteField(${index})" class="text-red-600 hover:text-red-800 p-1 rounded transition-colors" title="Delete">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="field-edit hidden">
+              <div class="space-y-3">
+                <div>
+                  <label class="block text-xs font-medium text-gray-700 mb-1">Field Name</label>
+                  <input type="text" class="field-name-input w-full px-3 py-2 text-sm border border-gray-300 rounded-lg" value="${field.name}">
+                </div>
+                <div>
+                  <label class="block text-xs font-medium text-gray-700 mb-1">Field Value</label>
+                  <textarea class="field-value-input w-full px-3 py-2 text-sm border border-gray-300 rounded-lg" rows="2">${field.value}</textarea>
+                </div>
+                <div class="flex justify-between items-center">
+                  <select class="field-category-input text-xs border border-gray-300 rounded px-2 py-1">
+                    <option value="A" ${section === 'A' ? 'selected' : ''}>📋 Document Info</option>
+                    <option value="B" ${section === 'B' ? 'selected' : ''}>📊 Metadata</option>
+                    <option value="C" ${section === 'C' ? 'selected' : ''}>📝 Textual Info</option>
+                    <option value="D" ${section === 'D' ? 'selected' : ''}>📐 Drawing Details</option>
+                  </select>
+                  <div class="space-x-2">
+                    <button onclick="cancelEdit(${index})" class="px-3 py-1 text-sm text-gray-600 hover:text-gray-800 bg-gray-200 hover:bg-gray-300 rounded transition-colors">Cancel</button>
+                    <button onclick="saveFieldEdit(${index})" class="px-3 py-1 text-sm text-white bg-${color}-600 hover:bg-${color}-700 rounded transition-colors">Save</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      function editField(index) {
+        const fieldItem = document.querySelector(`[data-field-index="${index}"]`);
+        fieldItem.querySelector('.field-display').classList.add('hidden');
+        fieldItem.querySelector('.field-edit').classList.remove('hidden');
+      }
+
+      function cancelEdit(index) {
+        const fieldItem = document.querySelector(`[data-field-index="${index}"]`);
+        fieldItem.querySelector('.field-display').classList.remove('hidden');
+        fieldItem.querySelector('.field-edit').classList.add('hidden');
+        
+        // Reset input values to original
+        const nameInput = fieldItem.querySelector('.field-name-input');
+        const valueInput = fieldItem.querySelector('.field-value-input');
+        const categoryInput = fieldItem.querySelector('.field-category-input');
+        nameInput.value = fieldsData[index].name;
+        valueInput.value = fieldsData[index].value;
+        categoryInput.value = fieldsData[index].category || 'A';
+      }
+
+      function saveFieldEdit(index) {
+        const fieldItem = document.querySelector(`[data-field-index="${index}"]`);
+        const nameInput = fieldItem.querySelector('.field-name-input');
+        const valueInput = fieldItem.querySelector('.field-value-input');
+        const categoryInput = fieldItem.querySelector('.field-category-input');
+        
+        const newName = nameInput.value.trim();
+        const newValue = valueInput.value.trim();
+        const newCategory = categoryInput.value;
+        
+        if (!newName || !newValue) {
+          alert('Both field name and value are required');
+          return;
+        }
+        
+        // Update the data
+        const oldCategory = fieldsData[index].category;
+        fieldsData[index].name = newName;
+        fieldsData[index].value = newValue;
+        fieldsData[index].category = newCategory;
+        
+        // If category changed, rebuild all sections
+        if (oldCategory !== newCategory) {
+          populateAllSections();
+        } else {
+          // Just update the display
+          fieldItem.querySelector('.field-name-display').textContent = newName;
+          fieldItem.querySelector('.field-value-display').textContent = newValue;
+          
+          // Switch back to display mode
+          fieldItem.querySelector('.field-display').classList.remove('hidden');
+          fieldItem.querySelector('.field-edit').classList.add('hidden');
+        }
+        
+        hasUnsavedChanges = true;
+        updateSaveButton();
+      }
+
+      function deleteField(index) {
+        if (confirm('Are you sure you want to delete this field?')) {
+          // Remove from data array
+          fieldsData.splice(index, 1);
+          
+          // Rebuild all sections with updated indices
+          populateAllSections();
+          
+          hasUnsavedChanges = true;
+          updateSaveButton();
+        }
+      }
+
+      function addNewField() {
+        const newField = {
+          name: 'New Field',
+          value: 'Enter value here',
+          category: 'Uncategorized',
+          id: `field_${fieldCounter++}`
+        };
+        
+        fieldsData.push(newField);
+        populateAllSections();
+        
+        // Automatically edit the new field
+        const newIndex = fieldsData.length - 1;
+        setTimeout(() => editField(newIndex), 100);
+        
+        hasUnsavedChanges = true;
+        updateSaveButton();
+      }
+
+      function addFieldToSection(section) {
+        const sectionNames = {
+          'A': 'Document Information',
+          'B': 'Metadata',
+          'C': 'Textual Information', 
+          'D': 'Drawing Details'
+        };
+        
+        const newField = {
+          name: `New ${sectionNames[section]} Field`,
+          value: 'Enter value here',
+          category: section,
+          id: `field_${fieldCounter++}`
+        };
+        
+        fieldsData.push(newField);
+        populateAllSections();
+        
+        // Automatically edit the new field
+        const newIndex = fieldsData.length - 1;
+        setTimeout(() => editField(newIndex), 100);
+        
+        hasUnsavedChanges = true;
+        updateSaveButton();
+      }
+
+      function updateSaveButton() {
+        const saveBtn = document.getElementById('saveAllBtn');
+        if (hasUnsavedChanges) {
+          saveBtn.classList.add('bg-orange-600', 'hover:bg-orange-700');
+          saveBtn.classList.remove('btn-primary');
+          saveBtn.innerHTML = `
+            <svg class="w-5 h-5 mr-2 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+            </svg>
+            Unsaved Changes - Click to Save
+          `;
+        } else {
+          saveBtn.classList.remove('bg-orange-600', 'hover:bg-orange-700');
+          saveBtn.classList.add('btn-primary');
+          saveBtn.innerHTML = `
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"></path>
+            </svg>
+            Save All Changes to JSON
+          `;
+        }
+      }
+
+      async function saveAllChanges() {
+        const saveBtn = document.getElementById('saveAllBtn');
+        const originalHTML = saveBtn.innerHTML;
+        
+        // Show loading state
+        saveBtn.disabled = true;
+        saveBtn.innerHTML = `
+          <svg class="w-5 h-5 mr-2 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          Saving...
+        `;
+        
+        try {
+          const response = await fetch(`/save-analysis/{{ filename }}`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({fields: fieldsData})
+          });
+          
+          const result = await response.json();
+          
+          if (result.success) {
+            hasUnsavedChanges = false;
+            updateSaveButton();
+            
+            // Show success message
+            saveBtn.innerHTML = `
+              <svg class="w-5 h-5 mr-2 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              Saved Successfully!
+            `;
+            
+            setTimeout(() => {
+              saveBtn.innerHTML = originalHTML;
+              updateSaveButton();
+            }, 2000);
+          } else {
+            throw new Error(result.error || 'Failed to save');
+          }
+          
+        } catch (error) {
+          console.error('Save failed:', error);
+          alert('Failed to save changes: ' + error.message);
+        } finally {
+          saveBtn.disabled = false;
+        }
+      }
+
+      // BOM Extraction functionality
+      async function extractBOM() {
+        const extractBtn = document.getElementById('extractBomBtn');
+        const statusDiv = document.getElementById('bomLiveStatus');
+        const resultsDiv = document.getElementById('bomResults');
+
+        extractBtn.disabled = true;
+        statusDiv.innerHTML = "⏳ Extracting BOM...";
+
+        // Start extraction
+        await fetch(`/extract-bom/{{ filename }}`, { method: 'POST' });
+
+        // Poll every 5s for partial CSV updates
+        let interval = setInterval(async () => {
+          try {
+            const response = await fetch(`/uploads/{{ filename }}_bom.csv?ts=${Date.now()}`);
+            if (response.ok) {
+              const text = await response.text();
+              const rows = text.trim().split("\n").map(r => r.split(","));
+              if (rows.length > 1) {
+                const headers = rows[0];
+                const bomItems = rows.slice(1).map(r => {
+                  let obj = {};
+                  headers.forEach((h, i) => obj[h] = r[i]);
+                  return obj;
+                });
+                bomData = bomItems;
+                displayBOMResults(bomData);
+                statusDiv.innerHTML = `⚡ Streaming... ${bomData.length} items so far`;
+              }
+            }
+          } catch (err) {
+            console.log("Polling error:", err);
+          }
+        }, 5000);
+
+        // Stop polling when done
+        setTimeout(() => {
+          clearInterval(interval);
+          statusDiv.innerHTML = `✅ Extraction complete! ${bomData.length} items found. <br>
+            <a href="/uploads/{{ filename }}_bom.csv" class="text-blue-600 underline">Download CSV</a>`;
+          extractBtn.disabled = false;
+        }, 60000); // give 1 min extraction window
+      }
+
+      function displayBOMResults(bomItems) {
+        const resultsDiv = document.getElementById('bomResults');
+
+        if (!bomItems || bomItems.length === 0) {
+          resultsDiv.innerHTML = `
+            <div class="text-center text-gray-500 py-8">
+              <svg class="w-12 h-12 mx-auto mb-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+              </svg>
+              <p class="text-sm font-medium">No BOM items found</p>
+            </div>
+          `;
+          return;
+        }
+
+        // Build table headers dynamically
+        const headers = Object.keys(bomItems[0]);
+        let html = `
+          <div class="overflow-x-auto">
+            <table class="min-w-full text-sm border border-gray-300 rounded-lg">
+              <thead class="bg-amber-100">
+                <tr>
+                  ${headers.map(h => `<th class="px-3 py-2 border border-gray-300 text-left font-semibold text-gray-800">
+                                        ${h.replace(/_/g, ' ').toUpperCase()}
+                                      </th>`).join('')}
+                </tr>
+              </thead>
+              <tbody>
+                ${bomItems.map(row => `
+                  <tr class="hover:bg-amber-50">
+                    ${headers.map(h => `<td class="px-3 py-2 border border-gray-300 text-gray-700">${row[h] || ''}</td>`).join('')}
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+          <div class="mt-4">
+            <button onclick="exportBOM()" 
+                    class="w-full px-3 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-lg transition-colors">
+              Export BOM to CSV
+            </button>
+          </div>
+        `;
+
+        resultsDiv.innerHTML = html;
+      }
+
+      function showBOMError(message) {
+        const resultsDiv = document.getElementById('bomResults');
+        resultsDiv.innerHTML = `
+          <div class="text-center text-red-500 py-8">
+            <svg class="w-12 h-12 mx-auto mb-3 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+            </svg>
+            <p class="text-sm font-medium">BOM Extraction Failed</p>
+            <p class="text-xs mt-1">${message}</p>
+          </div>
+        `;
+      }
+
+      function exportBOM() {
+        if (!bomData || bomData.length === 0) {
+          alert('No BOM data to export');
+          return;
+        }
+
+        const headers = Object.keys(bomData[0]);
+        const csvContent = [
+          headers.join(','),
+          ...bomData.map(row => headers.map(h => `"${row[h] || ''}"`).join(','))
+        ].join('\n');
+
+        const blob = new Blob([csvContent], { type: 'text/csv' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `BOM_{{ filename }}_${new Date().toISOString().split('T')[0]}.csv`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+      }
+
+      // Initialize everything when page loads
+      document.addEventListener('DOMContentLoaded', function() {
+        console.log('Page loaded, initializing...');
+        initializeResizableColumns();
+        updateSaveButton();
+        initializeCategorizedFields();
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+Flask
+Flask-Mail
+python-dotenv
+google-generativeai
+Pillow
+requests
+pdf2image
+opencv-python
+PyMuPDF
+pandas

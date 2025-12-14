@@ -1,0 +1,23 @@
+{
+  "fields": [
+    {
+      "name": "Error",
+      "value": "Image analysis failed: 404 models/gemma-3-27b is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods."
+    }
+  ],
+  "raw": {
+    "fields": [
+      {
+        "name": "Error",
+        "value": "Image analysis failed: 404 models/gemma-3-27b is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods."
+      }
+    ]
+  },
+  "metadata": {
+    "file_name": "21989378_34_1765718215.pdf",
+    "file_size": 747424,
+    "processing_time_seconds": 7.193,
+    "confidence": 81.0,
+    "language": "English"
+  }
+}

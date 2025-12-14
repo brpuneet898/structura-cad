@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CDP - CAD Document Processor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="{{ url_for('static', filename='style.css') }}"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-white">
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <!-- Logo -->
+          <div class="flex-shrink-0">
+            <h1 class="text-xl font-bold text-primary">CDA</h1>
+            <p class="text-xs text-gray-600 -mt-1">CAD Document Processor</p>
+          </div>
+
+          <!-- Links -->
+          <div class="block">
+            <div class="ml-10 flex items-baseline space-x-8">
+              <a
+                href="/"
+                class="text-gray-600 hover:text-blue-600 text-sm font-medium transition-colors"
+                >Home</a
+              >
+              <a
+                href="#how-it-works"
+                class="text-gray-600 hover:text-blue-600 text-sm font-medium transition-colors"
+                >How It Works</a
+              >
+              <a
+                href="/contact"
+                class="text-gray-600 hover:text-blue-600 text-sm font-medium transition-colors"
+                >Contact</a
+              >
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="flex items-center gap-3">
+            <a href="/" class="btn-primary px-4 py-2 rounded-lg text-sm">
+              Get Started
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+          Transform Your CAD Documents<br />
+          Into Actionable Data
+        </h1>
+        <p class="text-xl text-gray-700 mb-8 max-w-3xl mx-auto leading-relaxed">
+          AI-powered document processing that extracts, validates, and
+          structures technical drawings into standardized data formats.
+          Streamline your manufacturing workflow with intelligent automation.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <button
+            id="uploadBtn"
+            class="btn-primary px-8 py-4 rounded-lg text-lg font-semibold"
+            onclick="showUploadWidget()"
+          >
+            Upload Document
+          </button>
+          <a
+            href="#how-it-works"
+            class="btn-secondary px-8 py-4 rounded-lg text-lg font-semibold"
+          >
+            Watch Demo
+          </a>
+        </div>
+
+        <!-- Upload Widget (Hidden by default) -->
+        <div id="uploadWidget" class="hidden mt-8 max-w-md mx-auto">
+          <div
+            class="upload-card bg-white p-8 rounded-xl border-2 border-dashed border-gray-300 text-center"
+          >
+            <form id="uploadForm" enctype="multipart/form-data">
+              <!-- File Drop Zone -->
+              <div
+                id="dropZone"
+                class="mb-6 p-8 border-2 border-dashed border-primary rounded-lg transition-all hover:bg-light-accent cursor-pointer"
+              >
+                <svg
+                  class="mx-auto h-12 w-12 text-primary mb-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                  ></path>
+                </svg>
+                <p class="text-lg font-medium text-gray-900 mb-2">
+                  Drop your file here
+                </p>
+                <p class="text-sm text-gray-600 mb-4">or click to browse</p>
+                <p class="text-xs text-gray-500">
+                  Supports PDF, PNG, JPG files (Max 10MB)
+                </p>
+                <input
+                  type="file"
+                  id="fileInput"
+                  name="file"
+                  accept=".pdf,.png,.jpg,.jpeg"
+                  class="hidden"
+                />
+              </div>
+
+              <!-- Selected File Display -->
+              <div
+                id="selectedFile"
+                class="hidden mb-6 p-4 bg-light-accent rounded-lg"
+              >
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center">
+                    <svg
+                      class="h-8 w-8 text-primary mr-3"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                      ></path>
+                    </svg>
+                    <div>
+                      <p
+                        id="fileName"
+                        class="text-sm font-medium text-gray-900"
+                      ></p>
+                      <p id="fileSize" class="text-xs text-gray-600"></p>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    id="removeFileBtn"
+                    class="text-red-500 hover:text-red-700 transition-colors"
+                    onclick="removeFile()"
+                  >
+                    <svg
+                      class="h-5 w-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                <button
+                  type="submit"
+                  id="uploadSubmitBtn"
+                  class="btn-primary px-6 py-3 rounded-lg font-medium"
+                  disabled
+                >
+                  Upload
+                </button>
+                <button
+                  type="button"
+                  class="btn-secondary px-6 py-3 rounded-lg font-medium"
+                  onclick="hideUploadWidget()"
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">Powerful Features</h2>
+        <p class="text-xl text-gray-700 max-w-2xl mx-auto">
+          Advanced AI technology meets manufacturing expertise to deliver
+          unparalleled document processing capabilities.
+        </p>
+      </div>
+
+      <!-- Feature Cards -->
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-8"
+      >
+        <div class="feature-card p-8 rounded-xl">
+          <div
+            class="icon-container w-16 h-16 rounded-xl flex items-center justify-center mb-6"
+          >
+            <svg
+              class="w-8 h-8"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-4">
+            AI-Powered Extraction
+          </h3>
+          <p class="text-gray-700 leading-relaxed">
+            Automatically identify and extract key information from CAD
+            drawings, technical specifications, and manufacturing documents.
+          </p>
+        </div>
+
+        <div class="feature-card p-8 rounded-xl">
+          <div
+            class="icon-container w-16 h-16 rounded-xl flex items-center justify-center mb-6"
+          >
+            <svg
+              class="w-8 h-8"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-4">
+            Smart Field Mapping
+          </h3>
+          <p class="text-gray-700 leading-relaxed">
+            Automatically categorizes extracted data into standard formats while
+            identifying custom fields for validation.
+          </p>
+        </div>
+
+        <div class="feature-card p-8 rounded-xl">
+          <div
+            class="icon-container w-16 h-16 rounded-xl flex items-center justify-center mb-6"
+          >
+            <svg
+              class="w-8 h-8"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 10V3L4 14h7v7l9-11h-7z"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-4">
+            Automated Actions
+          </h3>
+          <p class="text-gray-700 leading-relaxed">
+            Generate procurement orders, cost analyses, and manufacturing
+            reports automatically with one-click workflows.
+          </p>
+        </div>
+
+        <div class="feature-card p-8 rounded-xl">
+          <div
+            class="icon-container w-16 h-16 rounded-xl flex items-center justify-center mb-6"
+          >
+            <svg
+              class="w-8 h-8"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-4">Interactive Chat</h3>
+          <p class="text-gray-700 leading-relaxed">
+            Ask natural language questions about your documents. Get instant
+            answers about dimensions, materials, and specifications.
+          </p>
+        </div>
+
+        <div class="feature-card p-8 rounded-xl">
+          <div
+            class="icon-container w-16 h-16 rounded-xl flex items-center justify-center mb-6"
+          >
+            <svg
+              class="w-8 h-8"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-4">
+            Enterprise Security
+          </h3>
+          <p class="text-gray-700 leading-relaxed">
+            Bank-level encryption and compliance protocols ensure your sensitive
+            manufacturing data remains protected.
+          </p>
+        </div>
+
+        <div class="feature-card p-8 rounded-xl">
+          <div
+            class="icon-container w-16 h-16 rounded-xl flex items-center justify-center mb-6"
+          >
+            <svg
+              class="w-8 h-8"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-4">Data Integration</h3>
+          <p class="text-gray-700 leading-relaxed">
+            Seamlessly integrate with ERP, PLM, and manufacturing systems
+            through robust APIs and standard data formats.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works - Creative Flowchart -->
+    <section
+      id="how-it-works"
+      class="py-20 bg-gradient-to-br from-blue-50 via-white to-purple-50 relative overflow-hidden"
+    >
+      <!-- Background Animation Elements -->
+      <div class="absolute inset-0 opacity-10">
+        <div
+          class="absolute top-20 left-10 w-32 h-32 bg-blue-300 rounded-full animate-pulse"
+        ></div>
+        <div
+          class="absolute top-40 right-20 w-24 h-24 bg-purple-300 rounded-full animate-bounce"
+        ></div>
+        <div
+          class="absolute bottom-20 left-1/4 w-20 h-20 bg-green-300 rounded-full animate-ping"
+        ></div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <!-- Header -->
+        <div class="text-center mb-20">
+          <h2
+            class="text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent mb-6"
+          >
+            🚀 The Magic Happens Here
+          </h2>
+          <p class="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+            Watch your documents transform through our intelligent pipeline
+          </p>
+        </div>
+
+        <!-- Flowchart Container -->
+        <div class="relative">
+          <!-- Main Flow Path -->
+          <div
+            class="hidden lg:block absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-blue-400 via-purple-400 to-green-400 transform -translate-y-1/2 z-0"
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-blue-400 via-purple-400 to-green-400 animate-pulse"
+            ></div>
+          </div>
+
+          <!-- Flow Steps -->
+          <div class="grid lg:grid-cols-4 gap-8 lg:gap-4 relative z-10">
+            <!-- Step 1: Upload -->
+            <div class="group relative">
+              <div
+                class="bg-white rounded-3xl p-8 shadow-xl border-4 border-blue-200 hover:border-blue-400 transition-all duration-500 hover:scale-105 hover:rotate-1"
+              >
+                <div class="text-center">
+                  <!-- Animated Icon -->
+                  <div class="relative mb-6">
+                    <div
+                      class="w-20 h-20 mx-auto bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-500"
+                    >
+                      <svg
+                        class="w-10 h-10 text-white animate-bounce"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div
+                      class="absolute -top-2 -right-2 w-6 h-6 bg-yellow-400 rounded-full animate-ping"
+                    ></div>
+                  </div>
+
+                  <h3 class="text-xl font-bold text-gray-900 mb-3">
+                    📄 Upload
+                  </h3>
+                  <p class="text-gray-600 text-sm leading-relaxed">
+                    Drop your CAD files, PDFs, or technical drawings
+                  </p>
+                </div>
+              </div>
+
+              <!-- Arrow -->
+              <div
+                class="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-20"
+              >
+                <div
+                  class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center animate-pulse"
+                >
+                  <svg
+                    class="w-4 h-4 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5l7 7-7 7"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 2: AI Processing -->
+            <div class="group relative">
+              <div
+                class="bg-white rounded-3xl p-8 shadow-xl border-4 border-purple-200 hover:border-purple-400 transition-all duration-500 hover:scale-105 hover:-rotate-1"
+              >
+                <div class="text-center">
+                  <!-- Animated Icon -->
+                  <div class="relative mb-6">
+                    <div
+                      class="w-20 h-20 mx-auto bg-gradient-to-br from-purple-500 to-purple-700 rounded-2xl flex items-center justify-center transform group-hover:-rotate-12 transition-transform duration-500"
+                    >
+                      <svg
+                        class="w-10 h-10 text-white animate-spin"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div
+                      class="absolute -top-2 -right-2 w-6 h-6 bg-green-400 rounded-full animate-ping"
+                    ></div>
+                  </div>
+
+                  <h3 class="text-xl font-bold text-gray-900 mb-3">
+                    🤖 AI Magic
+                  </h3>
+                  <p class="text-gray-600 text-sm leading-relaxed">
+                    Advanced AI extracts and analyzes every detail
+                  </p>
+                </div>
+              </div>
+
+              <!-- Arrow -->
+              <div
+                class="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-20"
+              >
+                <div
+                  class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center animate-pulse"
+                >
+                  <svg
+                    class="w-4 h-4 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5l7 7-7 7"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3: Validation -->
+            <div class="group relative">
+              <div
+                class="bg-white rounded-3xl p-8 shadow-xl border-4 border-green-200 hover:border-green-400 transition-all duration-500 hover:scale-105 hover:rotate-1"
+              >
+                <div class="text-center">
+                  <!-- Animated Icon -->
+                  <div class="relative mb-6">
+                    <div
+                      class="w-20 h-20 mx-auto bg-gradient-to-br from-green-500 to-green-700 rounded-2xl flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-500"
+                    >
+                      <svg
+                        class="w-10 h-10 text-white animate-pulse"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div
+                      class="absolute -top-2 -right-2 w-6 h-6 bg-blue-400 rounded-full animate-ping"
+                    ></div>
+                  </div>
+
+                  <h3 class="text-xl font-bold text-gray-900 mb-3">
+                    ✅ Validate
+                  </h3>
+                  <p class="text-gray-600 text-sm leading-relaxed">
+                    Review, edit, and perfect your extracted data
+                  </p>
+                </div>
+              </div>
+
+              <!-- Arrow -->
+              <div
+                class="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-20"
+              >
+                <div
+                  class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center animate-pulse"
+                >
+                  <svg
+                    class="w-4 h-4 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5l7 7-7 7"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 4: Export -->
+            <div class="group relative">
+              <div
+                class="bg-white rounded-3xl p-8 shadow-xl border-4 border-yellow-200 hover:border-yellow-400 transition-all duration-500 hover:scale-105 hover:-rotate-1"
+              >
+                <div class="text-center">
+                  <!-- Animated Icon -->
+                  <div class="relative mb-6">
+                    <div
+                      class="w-20 h-20 mx-auto bg-gradient-to-br from-yellow-500 to-orange-600 rounded-2xl flex items-center justify-center transform group-hover:-rotate-12 transition-transform duration-500"
+                    >
+                      <svg
+                        class="w-10 h-10 text-white animate-bounce"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M13 10V3L4 14h7v7l9-11h-7z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div
+                      class="absolute -top-2 -right-2 w-6 h-6 bg-purple-400 rounded-full animate-ping"
+                    ></div>
+                  </div>
+
+                  <h3 class="text-xl font-bold text-gray-900 mb-3">
+                    🚀 Export
+                  </h3>
+                  <p class="text-gray-600 text-sm leading-relaxed">
+                    Generate reports, orders, and integrate with your systems
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fun Stats -->
+          <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div
+              class="text-center p-6 bg-white/70 backdrop-blur-sm rounded-2xl border border-blue-200"
+            >
+              <div class="text-3xl font-bold text-blue-600 mb-2">⚡</div>
+              <div class="text-2xl font-bold text-gray-900">3 sec</div>
+              <div class="text-sm text-gray-600">Average Processing</div>
+            </div>
+            <div
+              class="text-center p-6 bg-white/70 backdrop-blur-sm rounded-2xl border border-purple-200"
+            >
+              <div class="text-3xl font-bold text-purple-600 mb-2">🎯</div>
+              <div class="text-2xl font-bold text-gray-900">99.5%</div>
+              <div class="text-sm text-gray-600">Accuracy Rate</div>
+            </div>
+            <div
+              class="text-center p-6 bg-white/70 backdrop-blur-sm rounded-2xl border border-green-200"
+            >
+              <div class="text-3xl font-bold text-green-600 mb-2">📊</div>
+              <div class="text-2xl font-bold text-gray-900">50+</div>
+              <div class="text-sm text-gray-600">Data Fields</div>
+            </div>
+            <div
+              class="text-center p-6 bg-white/70 backdrop-blur-sm rounded-2xl border border-yellow-200"
+            >
+              <div class="text-3xl font-bold text-yellow-600 mb-2">🔥</div>
+              <div class="text-2xl font-bold text-gray-900">24/7</div>
+              <div class="text-sm text-gray-600">Always Ready</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="py-20 bg-white text-center">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-4xl font-bold text-gray-900 mb-6">
+          Ready to Transform Your Workflow?
+        </h2>
+        <p class="text-xl text-gray-700 mb-8 leading-relaxed">
+          Join hundreds of manufacturing teams who have streamlined their
+          document processing with CDP.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/"
+            class="btn-primary px-8 py-4 rounded-lg text-lg font-semibold"
+          >
+            Start Free Trial
+          </a>
+          <a
+            href="/contact"
+            class="btn-secondary px-8 py-4 rounded-lg text-lg font-semibold"
+          >
+            Schedule Demo
+          </a>
+        </div>
+        <p class="text-sm text-gray-600 mt-4">
+          No credit card required • 14-day free trial • Cancel anytime
+        </p>
+      </div>
+    </section>
+
+    <script>
+      let selectedFile = null;
+
+      function showUploadWidget() {
+        document.getElementById("uploadWidget").classList.remove("hidden");
+        document.getElementById("uploadBtn").style.display = "none";
+      }
+
+      function hideUploadWidget() {
+        document.getElementById("uploadWidget").classList.add("hidden");
+        document.getElementById("uploadBtn").style.display = "inline-block";
+        removeFile();
+      }
+
+      function removeFile() {
+        selectedFile = null;
+        document.getElementById("selectedFile").classList.add("hidden");
+        document.getElementById("dropZone").classList.remove("hidden");
+        document.getElementById("fileInput").value = "";
+        document.getElementById("uploadSubmitBtn").disabled = true;
+      }
+
+      function displaySelectedFile(file) {
+        selectedFile = file;
+        document.getElementById("fileName").textContent = file.name;
+        document.getElementById("fileSize").textContent = formatFileSize(
+          file.size
+        );
+        document.getElementById("selectedFile").classList.remove("hidden");
+        document.getElementById("dropZone").classList.add("hidden");
+        document.getElementById("uploadSubmitBtn").disabled = false;
+      }
+
+      function formatFileSize(bytes) {
+        if (bytes === 0) return "0 Bytes";
+        const k = 1024;
+        const sizes = ["Bytes", "KB", "MB", "GB"];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
+      }
+
+      function validateFile(file) {
+        const allowedTypes = [
+          "application/pdf",
+          "image/png",
+          "image/jpeg",
+          "image/jpg",
+        ];
+        const maxSize = 10 * 1024 * 1024; // 10MB
+
+        if (!allowedTypes.includes(file.type)) {
+          alert("Please select a valid file type (PDF, PNG, JPG)");
+          return false;
+        }
+
+        if (file.size > maxSize) {
+          alert("File size must be less than 10MB");
+          return false;
+        }
+
+        return true;
+      }
+
+      // Set up event listeners
+      document.addEventListener("DOMContentLoaded", function () {
+        const dropZone = document.getElementById("dropZone");
+        const fileInput = document.getElementById("fileInput");
+        const uploadForm = document.getElementById("uploadForm");
+
+        // Click to browse
+        dropZone.addEventListener("click", function () {
+          fileInput.click();
+        });
+
+        // File input change
+        fileInput.addEventListener("change", function (e) {
+          const file = e.target.files[0];
+          if (file && validateFile(file)) {
+            displaySelectedFile(file);
+          } else {
+            fileInput.value = "";
+          }
+        });
+
+        // Drag and drop functionality
+        dropZone.addEventListener("dragover", function (e) {
+          e.preventDefault();
+          dropZone.classList.add("border-blue-500", "bg-blue-50");
+        });
+
+        dropZone.addEventListener("dragleave", function (e) {
+          e.preventDefault();
+          dropZone.classList.remove("border-blue-500", "bg-blue-50");
+        });
+
+        dropZone.addEventListener("drop", function (e) {
+          e.preventDefault();
+          dropZone.classList.remove("border-blue-500", "bg-blue-50");
+
+          const files = e.dataTransfer.files;
+          if (files.length > 0) {
+            const file = files[0];
+            if (validateFile(file)) {
+              fileInput.files = files;
+              displaySelectedFile(file);
+            }
+          }
+        });
+
+        // Form submission
+        uploadForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          if (!selectedFile) {
+            alert("Please select a file to upload");
+            return;
+          }
+
+          // Show loading state
+          const submitBtn = document.getElementById("uploadSubmitBtn");
+          const originalText = submitBtn.textContent;
+          submitBtn.disabled = true;
+          submitBtn.innerHTML =
+            '<svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>Uploading...';
+
+          // Create FormData and send to server
+          const formData = new FormData();
+          formData.append("file", selectedFile);
+
+          fetch("/upload", {
+            method: "POST",
+            body: formData,
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.success) {
+                // Show success message and redirect
+                submitBtn.innerHTML = `
+                  <svg class="w-5 h-5 mr-2 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  Analysis Complete!
+                `;
+                
+                setTimeout(() => {
+                  if (data.analysis_file) {
+                    window.location.href = `/analysis/${data.filename}`;
+                  } else {
+                    alert("File uploaded successfully! " + data.message);
+                    hideUploadWidget();
+                  }
+                }, 1000);
+              } else {
+                alert("Upload failed: " + data.error);
+              }
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+              alert("Upload failed: " + error.message);
+            })
+            .finally(() => {
+              // Reset button state
+              submitBtn.disabled = false;
+              submitBtn.textContent = originalText;
+            });
+        });
+      });
+
+      // Analysis Results Functions
+      function showAnalysisResults(fields, filename) {
+        // Hide hero section and upload widget
+        document.querySelector(".hero-gradient").style.display = "none";
+        document.getElementById("uploadWidget").classList.add("hidden");
+
+        // Create results container
+        const resultsContainer = document.createElement("div");
+        resultsContainer.id = "analysisResults";
+        resultsContainer.className = "py-20 bg-white";
+        resultsContainer.innerHTML = `
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Header with small upload button -->
+            <div class="flex justify-between items-center mb-8">
+              <div>
+                <h2 class="text-4xl font-bold text-gray-900 mb-2">CAD Analysis Results</h2>
+                <p class="text-lg text-gray-600">File: ${filename}</p>
+              </div>
+              <button onclick="resetToUpload()" class="btn-primary px-4 py-2 rounded-lg text-sm">
+                Upload New Document
+              </button>
+            </div>
+            
+            <!-- Fields Grid -->
+            <div id="fieldsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <!-- Field cards will be inserted here -->
+            </div>
+            
+            <!-- Add New Field Button -->
+            <div class="mt-8 text-center">
+              <button onclick="addNewField()" class="btn-secondary px-6 py-3 rounded-lg font-medium">
+                + Add New Field
+              </button>
+            </div>
+          </div>
+        `;
+
+        // Insert results after navigation
+        const nav = document.querySelector("nav");
+        nav.parentNode.insertBefore(resultsContainer, nav.nextSibling);
+
+        // Populate field cards
+        populateFieldCards(fields);
+      }
+
+      function populateFieldCards(fields) {
+        const fieldsGrid = document.getElementById("fieldsGrid");
+        fieldsGrid.innerHTML = "";
+
+        fields.forEach((field, index) => {
+          const fieldCard = createFieldCard(field, index);
+          fieldsGrid.appendChild(fieldCard);
+        });
+      }
+
+      function createFieldCard(field, index) {
+        const card = document.createElement("div");
+        card.className =
+          "field-card bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-all";
+        card.id = `field-${index}`;
+
+        card.innerHTML = `
+          <div class="field-display">
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="field-name text-lg font-semibold text-gray-900">${field.name}</h3>
+              <button onclick="editField(${index})" class="edit-btn text-primary hover:text-blue-700 transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                </svg>
+              </button>
+            </div>
+            <p class="field-value text-gray-700">${field.value}</p>
+            <button onclick="deleteField(${index})" class="delete-btn mt-4 text-red-500 hover:text-red-700 text-sm transition-colors">
+              Delete Field
+            </button>
+          </div>
+          
+          <div class="field-edit hidden">
+            <div class="space-y-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Field Name</label>
+                <input type="text" class="field-name-input w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" value="${field.name}">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Field Value</label>
+                <textarea class="field-value-input w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" rows="3">${field.value}</textarea>
+              </div>
+              <div class="flex gap-2">
+                <button onclick="saveField(${index})" class="btn-primary px-4 py-2 rounded text-sm">Save</button>
+                <button onclick="cancelEdit(${index})" class="btn-secondary px-4 py-2 rounded text-sm">Cancel</button>
+              </div>
+            </div>
+          </div>
+        `;
+
+        return card;
+      }
+
+      function editField(index) {
+        const card = document.getElementById(`field-${index}`);
+        card.querySelector(".field-display").classList.add("hidden");
+        card.querySelector(".field-edit").classList.remove("hidden");
+      }
+
+      function cancelEdit(index) {
+        const card = document.getElementById(`field-${index}`);
+        card.querySelector(".field-display").classList.remove("hidden");
+        card.querySelector(".field-edit").classList.add("hidden");
+      }
+
+      function saveField(index) {
+        const card = document.getElementById(`field-${index}`);
+        const nameInput = card.querySelector(".field-name-input");
+        const valueInput = card.querySelector(".field-value-input");
+
+        const newName = nameInput.value.trim();
+        const newValue = valueInput.value.trim();
+
+        if (!newName || !newValue) {
+          alert("Both field name and value are required");
+          return;
+        }
+
+        // Update display
+        card.querySelector(".field-name").textContent = newName;
+        card.querySelector(".field-value").textContent = newValue;
+
+        // Hide edit mode
+        cancelEdit(index);
+
+        // TODO: Save to backend if needed
+      }
+
+      function deleteField(index) {
+        if (confirm("Are you sure you want to delete this field?")) {
+          const card = document.getElementById(`field-${index}`);
+          card.remove();
+        }
+      }
+
+      function addNewField() {
+        const fieldsGrid = document.getElementById("fieldsGrid");
+        const newIndex = fieldsGrid.children.length;
+
+        const newField = { name: "New Field", value: "Enter value here" };
+        const newCard = createFieldCard(newField, newIndex);
+
+        fieldsGrid.appendChild(newCard);
+
+        // Immediately edit the new field
+        editField(newIndex);
+      }
+
+      function resetToUpload() {
+        // Remove analysis results
+        const resultsContainer = document.getElementById("analysisResults");
+        if (resultsContainer) {
+          resultsContainer.remove();
+        }
+
+        // Show hero section
+        document.querySelector(".hero-gradient").style.display = "block";
+
+        // Reset upload widget
+        hideUploadWidget();
+      }
+    </script>
+  </body>
+</html>

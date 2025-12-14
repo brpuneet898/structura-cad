@@ -1,0 +1,23 @@
+{
+  "fields": [
+    {
+      "name": "Error",
+      "value": "Gemini API not configured"
+    }
+  ],
+  "raw": {
+    "fields": [
+      {
+        "name": "Error",
+        "value": "Gemini API not configured"
+      }
+    ]
+  },
+  "metadata": {
+    "file_name": "21989378_34_1757859580.pdf",
+    "file_size": 747424,
+    "processing_time_seconds": 2.838,
+    "confidence": 81.0,
+    "language": "English"
+  }
+}
