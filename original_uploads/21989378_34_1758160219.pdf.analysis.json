@@ -1,0 +1,735 @@
+{
+  "fields": [
+    {
+      "name": "Drawing Number",
+      "value": "21989378"
+    },
+    {
+      "name": "Manufacturing specifications",
+      "value": "STD 515-0002"
+    },
+    {
+      "name": "Partial: Subsidiary text file format",
+      "value": "DSI-format"
+    }
+  ],
+  "raw": {
+    "fields": [
+      {
+        "name": "Drawing Number",
+        "value": "21989378"
+      },
+      {
+        "name": "Manufacturing specifications",
+        "value": "STD 515-0002"
+      },
+      {
+        "name": "Partial: Subsidiary text file format",
+        "value": "DSI-format"
+      }
+    ]
+  },
+  "metadata": {
+    "file_name": "21989378_34_1758160219.pdf",
+    "file_size": 747424,
+    "processing_time_seconds": 6.447,
+    "confidence": 83.0,
+    "language": "English"
+  },
+  "bom_items": [
+    {
+      "part_code": "996213",
+      "description": "Switch, ignition, selector, type",
+      "material": "NL",
+      "quantity": "8",
+      "remarks": null
+    },
+    {
+      "part_code": "995850",
+      "description": "Switch, Air, suspension",
+      "material": null,
+      "quantity": null,
+      "remarks": "S130"
+    },
+    {
+      "part_code": "995850",
+      "description": "Switch, beacon, warning, light",
+      "material": "WH",
+      "quantity": null,
+      "remarks": "S75"
+    },
+    {
+      "part_code": "995850",
+      "description": "Switch, power, take, off, 1",
+      "material": "WH",
+      "quantity": "8",
+      "remarks": "S28A"
+    },
+    {
+      "part_code": "995850",
+      "description": "Switch, power, take, off, 2",
+      "material": "WH",
+      "quantity": "8",
+      "remarks": "S28B"
+    },
+    {
+      "part_code": "996212",
+      "description": "Position, switch, clutch, pedal",
+      "material": "BK",
+      "quantity": null,
+      "remarks": "S58"
+    },
+    {
+      "part_code": "60110514",
+      "description": "Connector, vehicle, diagnostics",
+      "material": "BU",
+      "quantity": "18",
+      "remarks": "X01"
+    },
+    {
+      "part_code": "995850",
+      "description": "Switch, Interior, light, Dashboard, control",
+      "material": "WH",
+      "quantity": "8",
+      "remarks": "S05D"
+    },
+    {
+      "part_code": "25592279",
+      "description": "Switch, levelling, control, headlights, selector, type",
+      "material": "NL",
+      "quantity": "3",
+      "remarks": "S22"
+    },
+    {
+      "part_code": "984434",
+      "description": "Buzzer",
+      "material": "BK",
+      "quantity": "2",
+      "remarks": "H05"
+    },
+    {
+      "part_code": "8397424",
+      "description": "Sensor, accelerator, pedal",
+      "material": "BK",
+      "quantity": "6",
+      "remarks": "B25"
+    },
+    {
+      "part_code": "996601",
+      "description": "Power, outlet, 24V, front",
+      "material": "WH",
+      "quantity": "3",
+      "remarks": "X74F"
+    },
+    {
+      "part_code": "20367822",
+      "description": "Climate, unit",
+      "material": "BU",
+      "quantity": "6",
+      "remarks": "E32(1)"
+    },
+    {
+      "part_code": "X53",
+      "description": "Plug",
+      "material": "Allison",
+      "quantity": "9",
+      "remarks": "diagnostics, BK"
+    },
+    {
+      "part_code": "S223",
+      "description": "SWITCH",
+      "material": "ECO",
+      "quantity": "8",
+      "remarks": "ROLL, WH"
+    },
+    {
+      "part_code": "S243",
+      "description": "Switch",
+      "material": "Body",
+      "quantity": "8",
+      "remarks": "1,, builder, electrical, centre, WH"
+    },
+    {
+      "part_code": "S244",
+      "description": "Switch",
+      "material": "Body",
+      "quantity": "8",
+      "remarks": "2,, builder, electrical, centre, WH"
+    },
+    {
+      "part_code": "S245",
+      "description": "Switch",
+      "material": "Body",
+      "quantity": "8",
+      "remarks": "3,, builder, electrical, centre, WH"
+    },
+    {
+      "part_code": "S188",
+      "description": "Switch",
+      "material": "Fog",
+      "quantity": "8",
+      "remarks": "lamp., Front, WH"
+    },
+    {
+      "part_code": "S189",
+      "description": "Switch",
+      "material": "Fog",
+      "quantity": "8",
+      "remarks": "Lamp,, rear, WH"
+    },
+    {
+      "part_code": "V04.B",
+      "description": "Diode",
+      "material": "NL",
+      "quantity": "1",
+      "remarks": null
+    },
+    {
+      "part_code": "V04.A",
+      "description": "Diode",
+      "material": "NL",
+      "quantity": "1",
+      "remarks": null
+    },
+    {
+      "part_code": "V05.B",
+      "description": "Diode",
+      "material": "NL",
+      "quantity": "1",
+      "remarks": null
+    },
+    {
+      "part_code": "V05.A",
+      "description": "Diode",
+      "material": "NL",
+      "quantity": "1",
+      "remarks": null
+    },
+    {
+      "part_code": "V06.B",
+      "description": "Diode",
+      "material": "NL",
+      "quantity": null,
+      "remarks": null
+    },
+    {
+      "part_code": "V06.A",
+      "description": "Diode",
+      "material": "NL",
+      "quantity": "1",
+      "remarks": null
+    },
+    {
+      "part_code": "V01.B",
+      "description": "Diode",
+      "material": "NL",
+      "quantity": "1",
+      "remarks": null
+    },
+    {
+      "part_code": "V01.A",
+      "description": "Diode",
+      "material": "NL",
+      "quantity": "1",
+      "remarks": null
+    },
+    {
+      "part_code": "V02.B",
+      "description": "Diode",
+      "material": "module, NL",
+      "quantity": "1",
+      "remarks": null
+    },
+    {
+      "part_code": "V02.A",
+      "description": "Diode",
+      "material": "module",
+      "quantity": null,
+      "remarks": null
+    },
+    {
+      "part_code": "946366",
+      "description": "Diode",
+      "material": "NL",
+      "quantity": "1",
+      "remarks": ""
+    },
+    {
+      "part_code": "949597",
+      "description": "Diode",
+      "material": "NL",
+      "quantity": "1",
+      "remarks": ""
+    },
+    {
+      "part_code": "20367822",
+      "description": "HVAC, Climate, Unit, BU",
+      "material": "E32_A",
+      "quantity": "6",
+      "remarks": ""
+    },
+    {
+      "part_code": "996212",
+      "description": "Switch",
+      "material": "clutch_PPA",
+      "quantity": "2",
+      "remarks": "S58A"
+    },
+    {
+      "part_code": "995847",
+      "description": "Instrument, cluster",
+      "material": "NL",
+      "quantity": "32",
+      "remarks": "A03.A"
+    },
+    {
+      "part_code": "995847",
+      "description": "Instrument, cluster",
+      "material": "NL",
+      "quantity": "32",
+      "remarks": "A03.B"
+    },
+    {
+      "part_code": "20737547",
+      "description": "Control, unit",
+      "material": "ABS, (, Anti-lock, Brake, System, )",
+      "quantity": "17",
+      "remarks": "A12A.X1"
+    },
+    {
+      "part_code": "20367826",
+      "description": "Control, unit",
+      "material": "ABS, (, Anti-lock, Brake, System, )",
+      "quantity": "18",
+      "remarks": "A12A.X2"
+    },
+    {
+      "part_code": "60111077",
+      "description": "BK",
+      "material": "A20",
+      "quantity": "20",
+      "remarks": ""
+    },
+    {
+      "part_code": "995850",
+      "description": "Switch",
+      "material": "bogie, lift, selector, type",
+      "quantity": "8",
+      "remarks": "S11"
+    },
+    {
+      "part_code": "21156224",
+      "description": "Contact, reel",
+      "material": "BK",
+      "quantity": "12",
+      "remarks": "X115.A(1)"
+    },
+    {
+      "part_code": "995850",
+      "description": "Switch, unit",
+      "material": "ECS, min, rear, air, suspension, RHD",
+      "quantity": "8",
+      "remarks": "S198"
+    },
+    {
+      "part_code": "60110471",
+      "description": "Connector",
+      "material": "Audio",
+      "quantity": "4",
+      "remarks": "X149"
+    },
+    {
+      "part_code": "995850",
+      "description": "Switch, unit",
+      "material": "ECS, (electronic, controlled, susp.), min, rear, air, suspension",
+      "quantity": "8",
+      "remarks": "S67A"
+    },
+    {
+      "part_code": "978310",
+      "description": "Control, unit",
+      "material": "IECU2.0",
+      "quantity": "30",
+      "remarks": "A149A.CN1"
+    },
+    {
+      "part_code": "23341207",
+      "description": "Control, unit",
+      "material": "IECU2.0",
+      "quantity": "20",
+      "remarks": "A149A.CN2"
+    },
+    {
+      "part_code": "996539",
+      "description": "Control, unit",
+      "material": "IECU2.0",
+      "quantity": "20",
+      "remarks": "A149A.CN3(1)"
+    },
+    {
+      "part_code": "996538",
+      "description": "Control, unit",
+      "material": "IECU2.0",
+      "quantity": "20",
+      "remarks": "A149A.CN3(2)"
+    },
+    {
+      "part_code": "994417",
+      "description": "Control, unit",
+      "material": "TGW, (Telematics, Gateway)",
+      "quantity": "40",
+      "remarks": "A125"
+    },
+    {
+      "part_code": "949597",
+      "description": "NL",
+      "material": "V13.A",
+      "quantity": "1",
+      "remarks": ""
+    },
+    {
+      "part_code": "946366",
+      "description": "NL",
+      "material": "V13.B",
+      "quantity": "1",
+      "remarks": ""
+    },
+    {
+      "part_code": "940332",
+      "description": "1.31",
+      "material": "K",
+      "quantity": "43",
+      "remarks": null
+    },
+    {
+      "part_code": "995847",
+      "description": "A03.A",
+      "material": "N",
+      "quantity": "15",
+      "remarks": null
+    },
+    {
+      "part_code": "995847",
+      "description": "A03.B",
+      "material": "M",
+      "quantity": "15",
+      "remarks": null
+    },
+    {
+      "part_code": "21171233",
+      "description": "A03B",
+      "material": "N",
+      "quantity": "15",
+      "remarks": null
+    },
+    {
+      "part_code": "20429800",
+      "description": "A07.A",
+      "material": "L",
+      "quantity": "23",
+      "remarks": null
+    },
+    {
+      "part_code": "20429801",
+      "description": "A07.B",
+      "material": "K",
+      "quantity": "23",
+      "remarks": null
+    },
+    {
+      "part_code": "20737547",
+      "description": "A12A.X1",
+      "material": "D",
+      "quantity": "37",
+      "remarks": null
+    },
+    {
+      "part_code": "20367826",
+      "description": "A12A.X2",
+      "material": "C",
+      "quantity": "37",
+      "remarks": null
+    },
+    {
+      "part_code": "60111077",
+      "description": "A20",
+      "material": "C",
+      "quantity": "33",
+      "remarks": null
+    },
+    {
+      "part_code": "994417",
+      "description": "A125",
+      "material": "L",
+      "quantity": "17",
+      "remarks": null
+    },
+    {
+      "part_code": "978310",
+      "description": "A149A.CN1",
+      "material": "F",
+      "quantity": "39",
+      "remarks": null
+    },
+    {
+      "part_code": "23341207",
+      "description": "A149A.CN2",
+      "material": "F",
+      "quantity": "40",
+      "remarks": null
+    },
+    {
+      "part_code": "996539",
+      "description": "A149A.CN3(1)",
+      "material": "F",
+      "quantity": "39",
+      "remarks": null
+    },
+    {
+      "part_code": "996538",
+      "description": "A149A.CN3(2)",
+      "material": "G",
+      "quantity": "39",
+      "remarks": null
+    },
+    {
+      "part_code": "995854",
+      "description": "A154",
+      "material": "C",
+      "quantity": "37",
+      "remarks": null
+    },
+    {
+      "part_code": "994119",
+      "description": "A189.A",
+      "material": "F",
+      "quantity": "21",
+      "remarks": null
+    },
+    {
+      "part_code": "8397424",
+      "description": "B25",
+      "material": "E",
+      "quantity": "8",
+      "remarks": null
+    },
+    {
+      "part_code": "965886",
+      "description": "BATT_30",
+      "material": "G",
+      "quantity": "28",
+      "remarks": null
+    },
+    {
+      "part_code": "20409331",
+      "description": "BB_2",
+      "material": "G",
+      "quantity": "32",
+      "remarks": null
+    },
+    {
+      "part_code": "994551",
+      "description": "CPT_30",
+      "material": "O",
+      "quantity": "36",
+      "remarks": null
+    },
+    {
+      "part_code": "20367822",
+      "description": "E32(1)",
+      "material": "I",
+      "quantity": "35",
+      "remarks": null
+    },
+    {
+      "part_code": "20367822",
+      "description": "E32_A",
+      "material": "H",
+      "quantity": "33",
+      "remarks": null
+    },
+    {
+      "part_code": "20378934",
+      "description": "F01",
+      "material": "G",
+      "quantity": "27",
+      "remarks": null
+    },
+    {
+      "part_code": "20378934",
+      "description": "F02",
+      "material": "G",
+      "quantity": "27",
+      "remarks": null
+    },
+    {
+      "part_code": "20378932",
+      "description": "F03",
+      "material": "G",
+      "quantity": "27",
+      "remarks": null
+    },
+    {
+      "part_code": "20378932",
+      "description": "F04",
+      "material": "G",
+      "quantity": "27",
+      "remarks": null
+    },
+    {
+      "part_code": "20378932",
+      "description": "F05",
+      "material": "G",
+      "quantity": "27",
+      "remarks": null
+    },
+    {
+      "part_code": "20378932",
+      "description": "F06",
+      "material": "G",
+      "quantity": "27",
+      "remarks": null
+    },
+    {
+      "part_code": "20378932",
+      "description": "F07",
+      "material": "G",
+      "quantity": "27",
+      "remarks": null
+    },
+    {
+      "part_code": "20378932",
+      "description": "F08",
+      "material": "G",
+      "quantity": "26",
+      "remarks": null
+    },
+    {
+      "part_code": "20378932",
+      "description": "F09",
+      "material": "G",
+      "quantity": "26",
+      "remarks": null
+    },
+    {
+      "part_code": "20378932",
+      "description": "F10",
+      "material": "G",
+      "quantity": "26",
+      "remarks": null
+    },
+    {
+      "part_code": "20378932",
+      "description": "F11",
+      "material": "G",
+      "quantity": "26",
+      "remarks": null
+    },
+    {
+      "part_code": "20378932",
+      "description": "F12",
+      "material": "G",
+      "quantity": "26",
+      "remarks": null
+    },
+    {
+      "part_code": "20378932",
+      "description": "F13",
+      "material": "G",
+      "quantity": "26",
+      "remarks": null
+    },
+    {
+      "part_code": "20378934",
+      "description": "F14",
+      "material": "G",
+      "quantity": "26",
+      "remarks": null
+    },
+    {
+      "part_code": "20378935",
+      "description": "F15",
+      "material": "G",
+      "quantity": "25",
+      "remarks": null
+    },
+    {
+      "part_code": "20378935",
+      "description": "F16",
+      "material": "G",
+      "quantity": "25",
+      "remarks": null
+    },
+    {
+      "part_code": "20378936",
+      "description": "F21",
+      "material": "G",
+      "quantity": "27",
+      "remarks": null
+    },
+    {
+      "part_code": "20378934",
+      "description": "F22",
+      "material": "G",
+      "quantity": "27",
+      "remarks": null
+    },
+    {
+      "part_code": "20378932",
+      "description": "F23",
+      "material": "G",
+      "quantity": "27",
+      "remarks": null
+    },
+    {
+      "part_code": "20378932",
+      "description": "F24",
+      "material": "G",
+      "quantity": "26",
+      "remarks": null
+    },
+    {
+      "part_code": "20378932",
+      "description": "F25",
+      "material": "G",
+      "quantity": "26",
+      "remarks": null
+    },
+    {
+      "part_code": "20378932",
+      "description": "F26",
+      "material": "G",
+      "quantity": "26",
+      "remarks": null
+    },
+    {
+      "part_code": "20378932",
+      "description": "F27",
+      "material": "G",
+      "quantity": "26",
+      "remarks": null
+    },
+    {
+      "part_code": "20378932",
+      "description": "F28",
+      "material": "G",
+      "quantity": "26",
+      "remarks": null
+    },
+    {
+      "part_code": "20378932",
+      "description": "F29",
+      "material": "G",
+      "quantity": "26",
+      "remarks": null
+    },
+    {
+      "part_code": "20378932",
+      "description": "F30",
+      "material": "G",
+      "quantity": "26",
+      "remarks": null
+    }
+  ],
+  "bom_raw": "{\n  \"bom_items\": []\n}\n\n---\n\n{\n  \"bom_items\": []\n}\n\n---\n\n{\n  \"bom_items\": []\n}\n\n---\n\n{\n  \"bom_items\": []\n}\n\n---\n\n{\n  \"bom_items\": []\n}\n\n---\n\n{\n  \"bom_items\": [\n    {\n      \"part_code\": \"996213\",\n      \"description\": \"Switch, ignition, selector, type\",\n      \"material\": \"NL\",\n      \"quantity\": \"8\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"995850\",\n      \"description\": \"Switch, Air, suspension\",\n      \"material\": null,\n      \"quantity\": null,\n      \"remarks\": \"S130\"\n    },\n    {\n      \"part_code\": \"995850\",\n      \"description\": \"Switch, beacon, warning, light\",\n      \"material\": \"WH\",\n      \"quantity\": null,\n      \"remarks\": \"S75\"\n    },\n    {\n      \"part_code\": \"995850\",\n      \"description\": \"Switch, power, take, off, 1\",\n      \"material\": \"WH\",\n      \"quantity\": \"8\",\n      \"remarks\": \"S28A\"\n    },\n    {\n      \"part_code\": \"995850\",\n      \"description\": \"Switch, power, take, off, 2\",\n      \"material\": \"WH\",\n      \"quantity\": \"8\",\n      \"remarks\": \"S28B\"\n    },\n    {\n      \"part_code\": \"996212\",\n      \"description\": \"Position, switch, clutch, pedal\",\n      \"material\": \"BK\",\n      \"quantity\": null,\n      \"remarks\": \"S58\"\n    },\n    {\n      \"part_code\": \"60110514\",\n      \"description\": \"Connector, vehicle, diagnostics\",\n      \"material\": \"BU\",\n      \"quantity\": \"18\",\n      \"remarks\": \"X01\"\n    },\n    {\n      \"part_code\": \"995850\",\n      \"description\": \"Switch, Interior, light, Dashboard, control\",\n      \"material\": \"WH\",\n      \"quantity\": \"8\",\n      \"remarks\": \"S05D\"\n    },\n    {\n      \"part_code\": \"25592279\",\n      \"description\": \"Switch, levelling, control, headlights, selector, type\",\n      \"material\": \"NL\",\n      \"quantity\": \"3\",\n      \"remarks\": \"S22\"\n    },\n    {\n      \"part_code\": \"984434\",\n      \"description\": \"Buzzer\",\n      \"material\": \"BK\",\n      \"quantity\": \"2\",\n      \"remarks\": \"H05\"\n    },\n    {\n      \"part_code\": \"8397424\",\n      \"description\": \"Sensor, accelerator, pedal\",\n      \"material\": \"BK\",\n      \"quantity\": \"6\",\n      \"remarks\": \"B25\"\n    },\n    {\n      \"part_code\": \"996601\",\n      \"description\": \"Power, outlet, 24V, front\",\n      \"material\": \"WH\",\n      \"quantity\": \"3\",\n      \"remarks\": \"X74F\"\n    },\n    {\n      \"part_code\": \"20367822\",\n      \"description\": \"Climate, unit\",\n      \"material\": \"BU\",\n      \"quantity\": \"6\",\n      \"remarks\": \"E32(1)\"\n    }\n  ]\n}\n\n---\n\n{\n  \"bom_items\": [\n    {\n      \"part_code\": \"X53\",\n      \"description\": \"Plug\",\n      \"material\": \"Allison\",\n      \"quantity\": \"9\",\n      \"remarks\": \"diagnostics, BK\"\n    },\n    {\n      \"part_code\": \"S223\",\n      \"description\": \"SWITCH\",\n      \"material\": \"ECO\",\n      \"quantity\": \"8\",\n      \"remarks\": \"ROLL, WH\"\n    },\n    {\n      \"part_code\": \"S243\",\n      \"description\": \"Switch\",\n      \"material\": \"Body\",\n      \"quantity\": \"8\",\n      \"remarks\": \"1,, builder, electrical, centre, WH\"\n    },\n    {\n      \"part_code\": \"S244\",\n      \"description\": \"Switch\",\n      \"material\": \"Body\",\n      \"quantity\": \"8\",\n      \"remarks\": \"2,, builder, electrical, centre, WH\"\n    },\n    {\n      \"part_code\": \"S245\",\n      \"description\": \"Switch\",\n      \"material\": \"Body\",\n      \"quantity\": \"8\",\n      \"remarks\": \"3,, builder, electrical, centre, WH\"\n    },\n    {\n      \"part_code\": \"S188\",\n      \"description\": \"Switch\",\n      \"material\": \"Fog\",\n      \"quantity\": \"8\",\n      \"remarks\": \"lamp., Front, WH\"\n    },\n    {\n      \"part_code\": \"S189\",\n      \"description\": \"Switch\",\n      \"material\": \"Fog\",\n      \"quantity\": \"8\",\n      \"remarks\": \"Lamp,, rear, WH\"\n    },\n    {\n      \"part_code\": \"V04.B\",\n      \"description\": \"Diode\",\n      \"material\": \"NL\",\n      \"quantity\": \"1\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"V04.A\",\n      \"description\": \"Diode\",\n      \"material\": \"NL\",\n      \"quantity\": \"1\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"V05.B\",\n      \"description\": \"Diode\",\n      \"material\": \"NL\",\n      \"quantity\": \"1\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"V05.A\",\n      \"description\": \"Diode\",\n      \"material\": \"NL\",\n      \"quantity\": \"1\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"V06.B\",\n      \"description\": \"Diode\",\n      \"material\": \"NL\",\n      \"quantity\": null,\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"V06.A\",\n      \"description\": \"Diode\",\n      \"material\": \"NL\",\n      \"quantity\": \"1\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"V01.B\",\n      \"description\": \"Diode\",\n      \"material\": \"NL\",\n      \"quantity\": \"1\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"V01.A\",\n      \"description\": \"Diode\",\n      \"material\": \"NL\",\n      \"quantity\": \"1\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"V02.B\",\n      \"description\": \"Diode\",\n      \"material\": \"module, NL\",\n      \"quantity\": \"1\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"V02.A\",\n      \"description\": \"Diode\",\n      \"material\": \"module\",\n      \"quantity\": null,\n      \"remarks\": null\n    }\n  ]\n}\n\n---\n\n{\n  \"bom_items\": [\n    {\n      \"part_code\": \"946366\",\n      \"description\": \"Diode\",\n      \"material\": \"NL\",\n      \"quantity\": \"1\",\n      \"remarks\": \"\"\n    },\n    {\n      \"part_code\": \"949597\",\n      \"description\": \"Diode\",\n      \"material\": \"NL\",\n      \"quantity\": \"1\",\n      \"remarks\": \"\"\n    },\n    {\n      \"part_code\": \"20367822\",\n      \"description\": \"HVAC, Climate, Unit, BU\",\n      \"material\": \"E32_A\",\n      \"quantity\": \"6\",\n      \"remarks\": \"\"\n    },\n    {\n      \"part_code\": \"996212\",\n      \"description\": \"Switch\",\n      \"material\": \"clutch_PPA\",\n      \"quantity\": \"2\",\n      \"remarks\": \"S58A\"\n    },\n    {\n      \"part_code\": \"995847\",\n      \"description\": \"Instrument, cluster\",\n      \"material\": \"NL\",\n      \"quantity\": \"32\",\n      \"remarks\": \"A03.A\"\n    },\n    {\n      \"part_code\": \"995847\",\n      \"description\": \"Instrument, cluster\",\n      \"material\": \"NL\",\n      \"quantity\": \"32\",\n      \"remarks\": \"A03.B\"\n    },\n    {\n      \"part_code\": \"20737547\",\n      \"description\": \"Control, unit\",\n      \"material\": \"ABS, (, Anti-lock, Brake, System, )\",\n      \"quantity\": \"17\",\n      \"remarks\": \"A12A.X1\"\n    },\n    {\n      \"part_code\": \"20367826\",\n      \"description\": \"Control, unit\",\n      \"material\": \"ABS, (, Anti-lock, Brake, System, )\",\n      \"quantity\": \"18\",\n      \"remarks\": \"A12A.X2\"\n    },\n    {\n      \"part_code\": \"60111077\",\n      \"description\": \"BK\",\n      \"material\": \"A20\",\n      \"quantity\": \"20\",\n      \"remarks\": \"\"\n    },\n    {\n      \"part_code\": \"995850\",\n      \"description\": \"Switch\",\n      \"material\": \"bogie, lift, selector, type\",\n      \"quantity\": \"8\",\n      \"remarks\": \"S11\"\n    },\n    {\n      \"part_code\": \"21156224\",\n      \"description\": \"Contact, reel\",\n      \"material\": \"BK\",\n      \"quantity\": \"12\",\n      \"remarks\": \"X115.A(1)\"\n    },\n    {\n      \"part_code\": \"995850\",\n      \"description\": \"Switch, unit\",\n      \"material\": \"ECS, min, rear, air, suspension, RHD\",\n      \"quantity\": \"8\",\n      \"remarks\": \"S198\"\n    },\n    {\n      \"part_code\": \"60110471\",\n      \"description\": \"Connector\",\n      \"material\": \"Audio\",\n      \"quantity\": \"4\",\n      \"remarks\": \"X149\"\n    },\n    {\n      \"part_code\": \"995850\",\n      \"description\": \"Switch, unit\",\n      \"material\": \"ECS, (electronic, controlled, susp.), min, rear, air, suspension\",\n      \"quantity\": \"8\",\n      \"remarks\": \"S67A\"\n    },\n    {\n      \"part_code\": \"978310\",\n      \"description\": \"Control, unit\",\n      \"material\": \"IECU2.0\",\n      \"quantity\": \"30\",\n      \"remarks\": \"A149A.CN1\"\n    },\n    {\n      \"part_code\": \"23341207\",\n      \"description\": \"Control, unit\",\n      \"material\": \"IECU2.0\",\n      \"quantity\": \"20\",\n      \"remarks\": \"A149A.CN2\"\n    },\n    {\n      \"part_code\": \"996539\",\n      \"description\": \"Control, unit\",\n      \"material\": \"IECU2.0\",\n      \"quantity\": \"20\",\n      \"remarks\": \"A149A.CN3(1)\"\n    },\n    {\n      \"part_code\": \"996538\",\n      \"description\": \"Control, unit\",\n      \"material\": \"IECU2.0\",\n      \"quantity\": \"20\",\n      \"remarks\": \"A149A.CN3(2)\"\n    },\n    {\n      \"part_code\": \"994417\",\n      \"description\": \"Control, unit\",\n      \"material\": \"TGW, (Telematics, Gateway)\",\n      \"quantity\": \"40\",\n      \"remarks\": \"A125\"\n    },\n    {\n      \"part_code\": \"949597\",\n      \"description\": \"NL\",\n      \"material\": \"V13.A\",\n      \"quantity\": \"1\",\n      \"remarks\": \"\"\n    },\n    {\n      \"part_code\": \"946366\",\n      \"description\": \"NL\",\n      \"material\": \"V13.B\",\n      \"quantity\": \"1\",\n      \"remarks\": \"\"\n    }\n  ]\n}\n\n---\n\n{\n  \"bom_items\": []\n}\n\n---\n\n{\n  \"bom_items\": []\n}\n\n---\n\n{\n  \"bom_items\": []\n}\n\n---\n\n{\n  \"bom_items\": []\n}\n\n---\n\n{\n  \"bom_items\": [\n    {\n      \"part_code\": \"940332\",\n      \"description\": \"1.31\",\n      \"material\": \"K\",\n      \"quantity\": \"43\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"995847\",\n      \"description\": \"A03.A\",\n      \"material\": \"N\",\n      \"quantity\": \"15\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"995847\",\n      \"description\": \"A03.B\",\n      \"material\": \"M\",\n      \"quantity\": \"15\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"21171233\",\n      \"description\": \"A03B\",\n      \"material\": \"N\",\n      \"quantity\": \"15\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"20429800\",\n      \"description\": \"A07.A\",\n      \"material\": \"L\",\n      \"quantity\": \"23\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"20429801\",\n      \"description\": \"A07.B\",\n      \"material\": \"K\",\n      \"quantity\": \"23\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"20737547\",\n      \"description\": \"A12A.X1\",\n      \"material\": \"D\",\n      \"quantity\": \"37\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"20367826\",\n      \"description\": \"A12A.X2\",\n      \"material\": \"C\",\n      \"quantity\": \"37\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"60111077\",\n      \"description\": \"A20\",\n      \"material\": \"C\",\n      \"quantity\": \"33\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"994417\",\n      \"description\": \"A125\",\n      \"material\": \"L\",\n      \"quantity\": \"17\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"978310\",\n      \"description\": \"A149A.CN1\",\n      \"material\": \"F\",\n      \"quantity\": \"39\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"23341207\",\n      \"description\": \"A149A.CN2\",\n      \"material\": \"F\",\n      \"quantity\": \"40\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"996539\",\n      \"description\": \"A149A.CN3(1)\",\n      \"material\": \"F\",\n      \"quantity\": \"39\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"996538\",\n      \"description\": \"A149A.CN3(2)\",\n      \"material\": \"G\",\n      \"quantity\": \"39\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"995854\",\n      \"description\": \"A154\",\n      \"material\": \"C\",\n      \"quantity\": \"37\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"994119\",\n      \"description\": \"A189.A\",\n      \"material\": \"F\",\n      \"quantity\": \"21\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"8397424\",\n      \"description\": \"B25\",\n      \"material\": \"E\",\n      \"quantity\": \"8\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"965886\",\n      \"description\": \"BATT_30\",\n      \"material\": \"G\",\n      \"quantity\": \"28\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"20409331\",\n      \"description\": \"BB_2\",\n      \"material\": \"G\",\n      \"quantity\": \"32\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"994551\",\n      \"description\": \"CPT_30\",\n      \"material\": \"O\",\n      \"quantity\": \"36\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"20367822\",\n      \"description\": \"E32(1)\",\n      \"material\": \"I\",\n      \"quantity\": \"35\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"20367822\",\n      \"description\": \"E32_A\",\n      \"material\": \"H\",\n      \"quantity\": \"33\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"20378934\",\n      \"description\": \"F01\",\n      \"material\": \"G\",\n      \"quantity\": \"27\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"20378934\",\n      \"description\": \"F02\",\n      \"material\": \"G\",\n      \"quantity\": \"27\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"20378932\",\n      \"description\": \"F03\",\n      \"material\": \"G\",\n      \"quantity\": \"27\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"20378932\",\n      \"description\": \"F04\",\n      \"material\": \"G\",\n      \"quantity\": \"27\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"20378932\",\n      \"description\": \"F05\",\n      \"material\": \"G\",\n      \"quantity\": \"27\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"20378932\",\n      \"description\": \"F06\",\n      \"material\": \"G\",\n      \"quantity\": \"27\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"20378932\",\n      \"description\": \"F07\",\n      \"material\": \"G\",\n      \"quantity\": \"27\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"20378932\",\n      \"description\": \"F08\",\n      \"material\": \"G\",\n      \"quantity\": \"26\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"20378932\",\n      \"description\": \"F09\",\n      \"material\": \"G\",\n      \"quantity\": \"26\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"20378932\",\n      \"description\": \"F10\",\n      \"material\": \"G\",\n      \"quantity\": \"26\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"20378932\",\n      \"description\": \"F11\",\n      \"material\": \"G\",\n      \"quantity\": \"26\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"20378932\",\n      \"description\": \"F12\",\n      \"material\": \"G\",\n      \"quantity\": \"26\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"20378932\",\n      \"description\": \"F13\",\n      \"material\": \"G\",\n      \"quantity\": \"26\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"20378934\",\n      \"description\": \"F14\",\n      \"material\": \"G\",\n      \"quantity\": \"26\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"20378935\",\n      \"description\": \"F15\",\n      \"material\": \"G\",\n      \"quantity\": \"25\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"20378935\",\n      \"description\": \"F16\",\n      \"material\": \"G\",\n      \"quantity\": \"25\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"20378936\",\n      \"description\": \"F21\",\n      \"material\": \"G\",\n      \"quantity\": \"27\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"20378934\",\n      \"description\": \"F22\",\n      \"material\": \"G\",\n      \"quantity\": \"27\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"20378932\",\n      \"description\": \"F23\",\n      \"material\": \"G\",\n      \"quantity\": \"27\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"20378932\",\n      \"description\": \"F24\",\n      \"material\": \"G\",\n      \"quantity\": \"26\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"20378932\",\n      \"description\": \"F25\",\n      \"material\": \"G\",\n      \"quantity\": \"26\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"20378932\",\n      \"description\": \"F26\",\n      \"material\": \"G\",\n      \"quantity\": \"26\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"20378932\",\n      \"description\": \"F27\",\n      \"material\": \"G\",\n      \"quantity\": \"26\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"20378932\",\n      \"description\": \"F28\",\n      \"material\": \"G\",\n      \"quantity\": \"26\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"20378932\",\n      \"description\": \"F29\",\n      \"material\": \"G\",\n      \"quantity\": \"26\",\n      \"remarks\": null\n    },\n    {\n      \"part_code\": \"20378932\",\n      \"description\": \"F30\",\n      \"material\": \"G\",\n      \"quantity\": \"26\",\n      \"remarks\": null\n    }\n  ]\n}\n\n---\n\n{\n  \"bom_items\": []\n}\n\n---\n\n{\n  \"bom_items\": []\n}\n\n---\n\n{\n  \"bom_items\": []\n}\n\n---\n\n{\n  \"bom_items\": []\n}"
+}

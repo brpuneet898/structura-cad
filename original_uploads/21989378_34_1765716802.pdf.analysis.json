@@ -1,0 +1,23 @@
+{
+  "fields": [
+    {
+      "name": "Raw Analysis",
+      "value": "```json\n{\n  \"fields\": [\n    {\n      \"name\": \"Document Title\",\n      \"value\": \"WIRES INSTRUMENT\"\n    },\n    {\n      \"name\": \"Drawing Type\",\n      \"value\": \"PRIMARY DRAWING\"\n    },\n    {\n      \"name\": \"Drawing Number\",\n      \"value\": \"2"
+    }
+  ],
+  "raw": {
+    "fields": [
+      {
+        "name": "Raw Analysis",
+        "value": "```json\n{\n  \"fields\": [\n    {\n      \"name\": \"Document Title\",\n      \"value\": \"WIRES INSTRUMENT\"\n    },\n    {\n      \"name\": \"Drawing Type\",\n      \"value\": \"PRIMARY DRAWING\"\n    },\n    {\n      \"name\": \"Drawing Number\",\n      \"value\": \"2"
+      }
+    ]
+  },
+  "metadata": {
+    "file_name": "21989378_34_1765716802.pdf",
+    "file_size": 747424,
+    "processing_time_seconds": 15.616,
+    "confidence": 81.0,
+    "language": "English"
+  }
+}

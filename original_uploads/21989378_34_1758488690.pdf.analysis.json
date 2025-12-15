@@ -1,0 +1,39 @@
+{
+  "fields": [
+    {
+      "name": "Drawing Number",
+      "value": "21989378"
+    },
+    {
+      "name": "Manufacturing Specification",
+      "value": "STD 515-0002"
+    },
+    {
+      "name": "Partial: Subsidiary Text File Format",
+      "value": "DSI-format"
+    }
+  ],
+  "raw": {
+    "fields": [
+      {
+        "name": "Drawing Number",
+        "value": "21989378"
+      },
+      {
+        "name": "Manufacturing Specification",
+        "value": "STD 515-0002"
+      },
+      {
+        "name": "Partial: Subsidiary Text File Format",
+        "value": "DSI-format"
+      }
+    ]
+  },
+  "metadata": {
+    "file_name": "21989378_34_1758488690.pdf",
+    "file_size": 747424,
+    "processing_time_seconds": 6.197,
+    "confidence": 83.0,
+    "language": "English"
+  }
+}

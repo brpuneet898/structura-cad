@@ -1,0 +1,100 @@
+part_code,description,material,quantity,remarks
+996213,"Switch, ignition, selector, type",NL,8,
+995850,"Switch, Air, suspension",,,S130
+995850,"Switch, beacon, warning, light",WH,,S75
+995850,"Switch, power, take, off, 1",WH,8,S28A
+995850,"Switch, power, take, off, 2",WH,8,S28B
+996212,"Position, switch, clutch, pedal",BK,,S58
+60110514,"Connector, vehicle, diagnostics",BU,18,X01
+995850,"Switch, Interior, light, Dashboard, control",WH,8,S05D
+25592279,"Switch, levelling, control, headlights, selector, type",NL,3,S22
+984434,Buzzer,BK,2,H05
+8397424,"Sensor, accelerator, pedal",BK,6,B25
+996601,"Power, outlet, 24V, front",WH,3,X74F
+20367822,"Climate, unit",BU,6,E32(1)
+X53,Plug,Allison,9,"diagnostics, BK"
+S223,SWITCH,ECO,8,"ROLL, WH"
+S243,Switch,Body,8,"1,, builder, electrical, centre, WH"
+S244,Switch,Body,8,"2,, builder, electrical, centre, WH"
+S245,Switch,Body,8,"3,, builder, electrical, centre, WH"
+S188,Switch,Fog,8,"lamp., Front, WH"
+S189,Switch,Fog,8,"Lamp,, rear, WH"
+V04.B,Diode,NL,1,
+V04.A,Diode,NL,1,
+V05.B,Diode,NL,1,
+V05.A,Diode,NL,1,
+V06.B,Diode,NL,,
+V06.A,Diode,NL,1,
+V01.B,Diode,NL,1,
+V01.A,Diode,NL,1,
+V02.B,Diode,"module, NL",1,
+V02.A,Diode,module,,
+946366,Diode,NL,1,
+949597,Diode,NL,1,
+20367822,"HVAC, Climate, Unit, BU",E32_A,6,
+996212,Switch,clutch_PPA,2,S58A
+995847,"Instrument, cluster",NL,32,A03.A
+995847,"Instrument, cluster",NL,32,A03.B
+20737547,"Control, unit","ABS, (, Anti-lock, Brake, System, )",17,A12A.X1
+20367826,"Control, unit","ABS, (, Anti-lock, Brake, System, )",18,A12A.X2
+60111077,BK,A20,20,
+995850,Switch,"bogie, lift, selector, type",8,S11
+21156224,"Contact, reel",BK,12,X115.A(1)
+995850,"Switch, unit","ECS, min, rear, air, suspension, RHD",8,S198
+60110471,Connector,Audio,4,X149
+995850,"Switch, unit","ECS, (electronic, controlled, susp.), min, rear, air, suspension",8,S67A
+978310,"Control, unit",IECU2.0,30,A149A.CN1
+23341207,"Control, unit",IECU2.0,20,A149A.CN2
+996539,"Control, unit",IECU2.0,20,A149A.CN3(1)
+996538,"Control, unit",IECU2.0,20,A149A.CN3(2)
+994417,"Control, unit","TGW, (Telematics, Gateway)",40,A125
+949597,NL,V13.A,1,
+946366,NL,V13.B,1,
+940332,1.31,K,43,
+995847,A03.A,N,15,
+995847,A03.B,M,15,
+21171233,A03B,N,15,
+20429800,A07.A,L,23,
+20429801,A07.B,K,23,
+20737547,A12A.X1,D,37,
+20367826,A12A.X2,C,37,
+60111077,A20,C,33,
+994417,A125,L,17,
+978310,A149A.CN1,F,39,
+23341207,A149A.CN2,F,40,
+996539,A149A.CN3(1),F,39,
+996538,A149A.CN3(2),G,39,
+995854,A154,C,37,
+994119,A189.A,F,21,
+8397424,B25,E,8,
+965886,BATT_30,G,28,
+20409331,BB_2,G,32,
+994551,CPT_30,O,36,
+20367822,E32(1),I,35,
+20367822,E32_A,H,33,
+20378934,F01,G,27,
+20378934,F02,G,27,
+20378932,F03,G,27,
+20378932,F04,G,27,
+20378932,F05,G,27,
+20378932,F06,G,27,
+20378932,F07,G,27,
+20378932,F08,G,26,
+20378932,F09,G,26,
+20378932,F10,G,26,
+20378932,F11,G,26,
+20378932,F12,G,26,
+20378932,F13,G,26,
+20378934,F14,G,26,
+20378935,F15,G,25,
+20378935,F16,G,25,
+20378936,F21,G,27,
+20378934,F22,G,27,
+20378932,F23,G,27,
+20378932,F24,G,26,
+20378932,F25,G,26,
+20378932,F26,G,26,
+20378932,F27,G,26,
+20378932,F28,G,26,
+20378932,F29,G,26,
+20378932,F30,G,26,

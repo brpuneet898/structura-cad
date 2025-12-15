@@ -1,0 +1,23 @@
+{
+  "fields": [
+    {
+      "name": "Raw Analysis",
+      "value": "```json\n{\n  \"fields\": [\n    {\n      \"name\": \"Document Type\",\n      \"value\": \"Electrical Wiring Diagram / Schematic\"\n    },\n    {\n      \"name\": \"Detail View Label 1\",\n      \"value\": \"FRC-B (Refer Detail B)\"\n    },\n    {\n      \"name\": \""
+    }
+  ],
+  "raw": {
+    "fields": [
+      {
+        "name": "Raw Analysis",
+        "value": "```json\n{\n  \"fields\": [\n    {\n      \"name\": \"Document Type\",\n      \"value\": \"Electrical Wiring Diagram / Schematic\"\n    },\n    {\n      \"name\": \"Detail View Label 1\",\n      \"value\": \"FRC-B (Refer Detail B)\"\n    },\n    {\n      \"name\": \""
+      }
+    ]
+  },
+  "metadata": {
+    "file_name": "21989378_34_1765716909.pdf",
+    "file_size": 747424,
+    "processing_time_seconds": 13.161,
+    "confidence": 81.0,
+    "language": "English"
+  }
+}
