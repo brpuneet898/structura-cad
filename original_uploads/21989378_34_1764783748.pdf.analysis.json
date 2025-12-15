@@ -1,0 +1,215 @@
+{
+  "fields": [
+    {
+      "name": "Drawing Title",
+      "value": "PRIMARY DRAWING"
+    },
+    {
+      "name": "Company",
+      "value": "UD Trucks Corporation"
+    },
+    {
+      "name": "Note",
+      "value": "Drawing not complete without subsidiary text file in DSI-format"
+    },
+    {
+      "name": "Manufacturing Specification",
+      "value": "Manufacturing specifications according to STD 515-0002"
+    },
+    {
+      "name": "Drawing Number",
+      "value": "21989378 34 1(1)"
+    },
+    {
+      "name": "View",
+      "value": "FRONT VIEW"
+    },
+    {
+      "name": "View",
+      "value": "SIDE VIEW"
+    },
+    {
+      "name": "Detail Reference",
+      "value": "FRC-B (Refer Detail B)"
+    },
+    {
+      "name": "Detail Label",
+      "value": "Detail B"
+    },
+    {
+      "name": "Part Number",
+      "value": "B-1209-pino 21994778"
+    },
+    {
+      "name": "View Description",
+      "value": "FRC-A-View From Fuse Relay Insertion Side"
+    },
+    {
+      "name": "Note Number",
+      "value": "Note 2"
+    },
+    {
+      "name": "Detail Label",
+      "value": "Detail C"
+    },
+    {
+      "name": "Part Name",
+      "value": "Channel Bracket J62"
+    },
+    {
+      "name": "Detail Label",
+      "value": "Detail D"
+    },
+    {
+      "name": "Detail Label",
+      "value": "Detail E"
+    },
+    {
+      "name": "Detail Label",
+      "value": "Detail G"
+    },
+    {
+      "name": "Part Name",
+      "value": "Channel Bracket J56"
+    },
+    {
+      "name": "Part Name",
+      "value": "Channel Bracket J61"
+    },
+    {
+      "name": "Detail Label",
+      "value": "Detail N"
+    },
+    {
+      "name": "Detail Label",
+      "value": "Detail M"
+    },
+    {
+      "name": "Detail Label",
+      "value": "Detail F"
+    },
+    {
+      "name": "Text",
+      "value": "WIRES"
+    },
+    {
+      "name": "Text",
+      "value": "INSTRU TRUMENT"
+    },
+    {
+      "name": "Text",
+      "value": "RHD"
+    }
+  ],
+  "raw": {
+    "fields": [
+      {
+        "name": "Drawing Title",
+        "value": "PRIMARY DRAWING"
+      },
+      {
+        "name": "Company",
+        "value": "UD Trucks Corporation"
+      },
+      {
+        "name": "Note",
+        "value": "Drawing not complete without subsidiary text file in DSI-format"
+      },
+      {
+        "name": "Manufacturing Specification",
+        "value": "Manufacturing specifications according to STD 515-0002"
+      },
+      {
+        "name": "Drawing Number",
+        "value": "21989378 34 1(1)"
+      },
+      {
+        "name": "View",
+        "value": "FRONT VIEW"
+      },
+      {
+        "name": "View",
+        "value": "SIDE VIEW"
+      },
+      {
+        "name": "Detail Reference",
+        "value": "FRC-B (Refer Detail B)"
+      },
+      {
+        "name": "Detail Label",
+        "value": "Detail B"
+      },
+      {
+        "name": "Part Number",
+        "value": "B-1209-pino 21994778"
+      },
+      {
+        "name": "View Description",
+        "value": "FRC-A-View From Fuse Relay Insertion Side"
+      },
+      {
+        "name": "Note Number",
+        "value": "Note 2"
+      },
+      {
+        "name": "Detail Label",
+        "value": "Detail C"
+      },
+      {
+        "name": "Part Name",
+        "value": "Channel Bracket J62"
+      },
+      {
+        "name": "Detail Label",
+        "value": "Detail D"
+      },
+      {
+        "name": "Detail Label",
+        "value": "Detail E"
+      },
+      {
+        "name": "Detail Label",
+        "value": "Detail G"
+      },
+      {
+        "name": "Part Name",
+        "value": "Channel Bracket J56"
+      },
+      {
+        "name": "Part Name",
+        "value": "Channel Bracket J61"
+      },
+      {
+        "name": "Detail Label",
+        "value": "Detail N"
+      },
+      {
+        "name": "Detail Label",
+        "value": "Detail M"
+      },
+      {
+        "name": "Detail Label",
+        "value": "Detail F"
+      },
+      {
+        "name": "Text",
+        "value": "WIRES"
+      },
+      {
+        "name": "Text",
+        "value": "INSTRU TRUMENT"
+      },
+      {
+        "name": "Text",
+        "value": "RHD"
+      }
+    ]
+  },
+  "metadata": {
+    "file_name": "21989378_34_1764783748.pdf",
+    "file_size": 747424,
+    "processing_time_seconds": 13.129,
+    "confidence": 99.9,
+    "language": "English"
+  }
+}

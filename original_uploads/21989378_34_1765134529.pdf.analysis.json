@@ -1,0 +1,23 @@
+{
+  "fields": [
+    {
+      "name": "Error",
+      "value": "Image analysis failed: Invalid operation: The `response.text` quick accessor requires the response to contain a valid `Part`, but none were returned. The candidate's [finish_reason](https://ai.google.dev/api/generate-content#finishreason) is 2."
+    }
+  ],
+  "raw": {
+    "fields": [
+      {
+        "name": "Error",
+        "value": "Image analysis failed: Invalid operation: The `response.text` quick accessor requires the response to contain a valid `Part`, but none were returned. The candidate's [finish_reason](https://ai.google.dev/api/generate-content#finishreason) is 2."
+      }
+    ]
+  },
+  "metadata": {
+    "file_name": "21989378_34_1765134529.pdf",
+    "file_size": 747424,
+    "processing_time_seconds": 34.641,
+    "confidence": 81.0,
+    "language": "English"
+  }
+}

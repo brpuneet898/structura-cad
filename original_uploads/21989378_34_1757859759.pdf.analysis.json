@@ -1,0 +1,23 @@
+{
+  "fields": [
+    {
+      "name": "Error",
+      "value": "Image analysis failed: 504 The request timed out. Please try again."
+    }
+  ],
+  "raw": {
+    "fields": [
+      {
+        "name": "Error",
+        "value": "Image analysis failed: 504 The request timed out. Please try again."
+      }
+    ]
+  },
+  "metadata": {
+    "file_name": "21989378_34_1757859759.pdf",
+    "file_size": 747424,
+    "processing_time_seconds": 1203.216,
+    "confidence": 81.0,
+    "language": "English"
+  }
+}

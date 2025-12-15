@@ -1,0 +1,455 @@
+{
+  "fields": [
+    {
+      "name": "Drawing Note 1",
+      "value": "NOTE: APPLY HEAT SHRINK WITH GLUE ON OPEN END OF MANIFOLD. HEAT SHRINK TO BE SQUEEZED TOGETHER IN ORDER TO CLOSE MANIFOLD'S EXIT"
+    },
+    {
+      "name": "Drawing Note 2",
+      "value": "SEE DETAIL VIEW C"
+    },
+    {
+      "name": "Detail View Label",
+      "value": "DETAILED VIEW \"A\""
+    },
+    {
+      "name": "Drawing Note 3",
+      "value": "NOTE B: P-CLAMP ORIENTATION."
+    },
+    {
+      "name": "Detail View Label",
+      "value": "DETAILED VIEW \"B\""
+    },
+    {
+      "name": "Partial Text",
+      "value": "BEEN DRAWN INA"
+    },
+    {
+      "name": "Detail View Label",
+      "value": "DETAILED VIEW \"C\""
+    },
+    {
+      "name": "Component",
+      "value": "P-CLAMP TIE-BAND"
+    },
+    {
+      "name": "View Label",
+      "value": "VIEW BB"
+    },
+    {
+      "name": "Component",
+      "value": "TIE-BAND"
+    },
+    {
+      "name": "Component",
+      "value": "KNUCKLE"
+    },
+    {
+      "name": "Component",
+      "value": "P-CLAMP"
+    },
+    {
+      "name": "Component",
+      "value": "BOAR"
+    },
+    {
+      "name": "Drawing Note 4",
+      "value": "NOTE C: P-CLAMP ORIENTATION"
+    },
+    {
+      "name": "View Label",
+      "value": "VIEW C-C"
+    },
+    {
+      "name": "Instruction",
+      "value": "PLUG BACKSHELL INTO CONNECTOR AS SHOWN ABOVE. CONNECTOR'S LOCK TO BE POINTING TOWARDS BACKSHELL EXIT."
+    },
+    {
+      "name": "Instruction",
+      "value": "PLUG BACKSHELL INTO CONNECTOR AS SHOWN ABOVE. CONNECTOR'S LOCK TO BE POINTING OPPOSITE TO BACKSHELL EXIT."
+    },
+    {
+      "name": "Component",
+      "value": "CONDUIT"
+    },
+    {
+      "name": "Drawing Note 5",
+      "value": "SEE DETAIL VIEW B"
+    },
+    {
+      "name": "Detail View Label",
+      "value": "DETAILED VIEW \"D\""
+    },
+    {
+      "name": "Drawing Note 6",
+      "value": "P-CLAMPS TO BE POINTING UPWARDS AT ALL TIME"
+    },
+    {
+      "name": "Part Number",
+      "value": "XY709"
+    },
+    {
+      "name": "Part Number",
+      "value": "XY781"
+    },
+    {
+      "name": "Part Number",
+      "value": "XY774"
+    },
+    {
+      "name": "Component",
+      "value": "BOARD"
+    },
+    {
+      "name": "Component",
+      "value": "ARNESS LABEL"
+    },
+    {
+      "name": "Drawing Note 7",
+      "value": "SEE DETAIL VIEW D"
+    },
+    {
+      "name": "Part Number",
+      "value": "CL-30014"
+    },
+    {
+      "name": "Material",
+      "value": "TAPE 22"
+    },
+    {
+      "name": "Specification 1",
+      "value": "1. MUST CONFORM TO JDS-G208."
+    },
+    {
+      "name": "Specification 2",
+      "value": "2. REFER TO DIN76722 TYPE-B (FLRY-B) UNLESS OTHERWISE SPECIFIED."
+    },
+    {
+      "name": "Specification 3",
+      "value": "3. CIRCUIT NUMBER TO BE PRINTED ON THE WIRES IN 40 MM INTERVALS."
+    },
+    {
+      "name": "Specification 4",
+      "value": "4. BREAKOUTS TO BE MADE WITH SUITABLE MANIFOLDS UNLESS OTHERWISE SPECIFIED IN CASE NO SUITABLE MANIFOLDS ARE AVAILABLE, BREAKOUTS TO BE TAPED WITH TEXTILE TAPE."
+    },
+    {
+      "name": "Specification 5",
+      "value": "5. ALL UNUSED CAVITIES OF WATERPROOF CONNECTORS MUST BE PLUGGED WITH CAVITIY PLUGS."
+    },
+    {
+      "name": "Specification 6",
+      "value": "6. ALL BREAKOUTS TO BE ORIENTED LIKE DRAWN."
+    },
+    {
+      "name": "Specification 7",
+      "value": "7. FOR ALL DOUBLE HEAD TIE BANDS, LOOP AND ATTACH ONE END ONLY TO HARNESS AND LEAVE OTHER END OPEN"
+    },
+    {
+      "name": "Specification 8",
+      "value": "8. EQUIVALENT TERMINAL, SEAL OR BACKSHELL PART NUMBER BY THE SAME MANUFACTURER MAY BE SUBSTITUTED."
+    },
+    {
+      "name": "Specification 9",
+      "value": "9. SPLICE LOCATIONS ARE REFERENCE ONLY; EXCEPT FOR CAN DATA AND TWISTED PAIR CIRCUIT AS APPLICABLE."
+    },
+    {
+      "name": "Specification 10",
+      "value": "10. ALL TWISTED PAIRS, TRIPLE OR QUAD CABLES SHOULD HAVE MINIMUM ONE TWIST PER 25 MM AS APPLICABLE."
+    },
+    {
+      "name": "Specification 11",
+      "value": "11. SPACING BETWEEN ADJACENT SPLICES 25 MM MINIMUM."
+    },
+    {
+      "name": "Specification 12",
+      "value": "12. SPLICES MUST BE INSULATED WITH HOT MELT HEAT SHRINK."
+    },
+    {
+      "name": "Specification 13",
+      "value": "13. OVERLAP CONDUIT TO BE SELECTED: SCHLEMMER TWIN UNLESS OTHERWISE APPROVED BY ENGINEERING."
+    },
+    {
+      "name": "Specification 14",
+      "value": "14. FOR NON-SLIT CONDUIT TO BE USED: SCHLEMMER POLYFLEX UFW PP MOD UNLESS OTHERWISE SPECIFIED."
+    },
+    {
+      "name": "Specification 15",
+      "value": "15. CONDUITS TO BE CUT ON THE CREST."
+    },
+    {
+      "name": "Specification 16",
+      "value": "16. ALL OPEN CONDUIT END TO BE TEXTILE SPOT TAPED."
+    },
+    {
+      "name": "Specification 17",
+      "value": "17. APPLY HEAT SHRINK W/O GLUE OVER CONNECTOR END AND CONDUIT WHERE APPLICABLE."
+    },
+    {
+      "name": "Specification 18",
+      "value": "18. ATTACH FIR TREE TO MANIFOLD AS SHOWN. TAPE MANIFOLD SURFACE IF REQUIRED."
+    },
+    {
+      "name": "Specification 19",
+      "value": "19. APPLY NON-SLIT CONDUIT FOR BRANCHES COMING OUT OF MANIFOLD: 57M13339."
+    },
+    {
+      "name": "Specification 20",
+      "value": "20. WIRE FLR2X EXCHANGED AGAINST P3S WIRE ACCORDING TO SAME ISO6722 T3 REQUIREMENTS AS CONFIRMED PER JDZW PF."
+    },
+    {
+      "name": "Specification 21",
+      "value": "21. ADD LABEL BEHIND EVERY CONNECTOR WITH DESIGNATION."
+    },
+    {
+      "name": "Specification 22",
+      "value": "22. PLACE P-CLAMPS WITH ITS ROUND SIDE POINTING UPWARDS. IN A WAY THAT THE FLAT SIDE LAYS ON THE BOARD."
+    },
+    {
+      "name": "Assembly Title",
+      "value": "MOUNTING ASSEMBLY"
+    },
+    {
+      "name": "Assembly Title Translation 1",
+      "value": "MONTAGEZUSAMMENBAU"
+    },
+    {
+      "name": "Assembly Title Translation 2",
+      "value": "CONJUNTO MONTADO"
+    },
+    {
+      "name": "Location",
+      "value": "ILLINOIS 61265"
+    }
+  ],
+  "raw": {
+    "fields": [
+      {
+        "name": "Drawing Note 1",
+        "value": "NOTE: APPLY HEAT SHRINK WITH GLUE ON OPEN END OF MANIFOLD. HEAT SHRINK TO BE SQUEEZED TOGETHER IN ORDER TO CLOSE MANIFOLD'S EXIT"
+      },
+      {
+        "name": "Drawing Note 2",
+        "value": "SEE DETAIL VIEW C"
+      },
+      {
+        "name": "Detail View Label",
+        "value": "DETAILED VIEW \"A\""
+      },
+      {
+        "name": "Drawing Note 3",
+        "value": "NOTE B: P-CLAMP ORIENTATION."
+      },
+      {
+        "name": "Detail View Label",
+        "value": "DETAILED VIEW \"B\""
+      },
+      {
+        "name": "Partial Text",
+        "value": "BEEN DRAWN INA"
+      },
+      {
+        "name": "Detail View Label",
+        "value": "DETAILED VIEW \"C\""
+      },
+      {
+        "name": "Component",
+        "value": "P-CLAMP TIE-BAND"
+      },
+      {
+        "name": "View Label",
+        "value": "VIEW BB"
+      },
+      {
+        "name": "Component",
+        "value": "TIE-BAND"
+      },
+      {
+        "name": "Component",
+        "value": "KNUCKLE"
+      },
+      {
+        "name": "Component",
+        "value": "P-CLAMP"
+      },
+      {
+        "name": "Component",
+        "value": "BOAR"
+      },
+      {
+        "name": "Drawing Note 4",
+        "value": "NOTE C: P-CLAMP ORIENTATION"
+      },
+      {
+        "name": "View Label",
+        "value": "VIEW C-C"
+      },
+      {
+        "name": "Instruction",
+        "value": "PLUG BACKSHELL INTO CONNECTOR AS SHOWN ABOVE. CONNECTOR'S LOCK TO BE POINTING TOWARDS BACKSHELL EXIT."
+      },
+      {
+        "name": "Instruction",
+        "value": "PLUG BACKSHELL INTO CONNECTOR AS SHOWN ABOVE. CONNECTOR'S LOCK TO BE POINTING OPPOSITE TO BACKSHELL EXIT."
+      },
+      {
+        "name": "Component",
+        "value": "CONDUIT"
+      },
+      {
+        "name": "Drawing Note 5",
+        "value": "SEE DETAIL VIEW B"
+      },
+      {
+        "name": "Detail View Label",
+        "value": "DETAILED VIEW \"D\""
+      },
+      {
+        "name": "Drawing Note 6",
+        "value": "P-CLAMPS TO BE POINTING UPWARDS AT ALL TIME"
+      },
+      {
+        "name": "Part Number",
+        "value": "XY709"
+      },
+      {
+        "name": "Part Number",
+        "value": "XY781"
+      },
+      {
+        "name": "Part Number",
+        "value": "XY774"
+      },
+      {
+        "name": "Component",
+        "value": "BOARD"
+      },
+      {
+        "name": "Component",
+        "value": "ARNESS LABEL"
+      },
+      {
+        "name": "Drawing Note 7",
+        "value": "SEE DETAIL VIEW D"
+      },
+      {
+        "name": "Part Number",
+        "value": "CL-30014"
+      },
+      {
+        "name": "Material",
+        "value": "TAPE 22"
+      },
+      {
+        "name": "Specification 1",
+        "value": "1. MUST CONFORM TO JDS-G208."
+      },
+      {
+        "name": "Specification 2",
+        "value": "2. REFER TO DIN76722 TYPE-B (FLRY-B) UNLESS OTHERWISE SPECIFIED."
+      },
+      {
+        "name": "Specification 3",
+        "value": "3. CIRCUIT NUMBER TO BE PRINTED ON THE WIRES IN 40 MM INTERVALS."
+      },
+      {
+        "name": "Specification 4",
+        "value": "4. BREAKOUTS TO BE MADE WITH SUITABLE MANIFOLDS UNLESS OTHERWISE SPECIFIED IN CASE NO SUITABLE MANIFOLDS ARE AVAILABLE, BREAKOUTS TO BE TAPED WITH TEXTILE TAPE."
+      },
+      {
+        "name": "Specification 5",
+        "value": "5. ALL UNUSED CAVITIES OF WATERPROOF CONNECTORS MUST BE PLUGGED WITH CAVITIY PLUGS."
+      },
+      {
+        "name": "Specification 6",
+        "value": "6. ALL BREAKOUTS TO BE ORIENTED LIKE DRAWN."
+      },
+      {
+        "name": "Specification 7",
+        "value": "7. FOR ALL DOUBLE HEAD TIE BANDS, LOOP AND ATTACH ONE END ONLY TO HARNESS AND LEAVE OTHER END OPEN"
+      },
+      {
+        "name": "Specification 8",
+        "value": "8. EQUIVALENT TERMINAL, SEAL OR BACKSHELL PART NUMBER BY THE SAME MANUFACTURER MAY BE SUBSTITUTED."
+      },
+      {
+        "name": "Specification 9",
+        "value": "9. SPLICE LOCATIONS ARE REFERENCE ONLY; EXCEPT FOR CAN DATA AND TWISTED PAIR CIRCUIT AS APPLICABLE."
+      },
+      {
+        "name": "Specification 10",
+        "value": "10. ALL TWISTED PAIRS, TRIPLE OR QUAD CABLES SHOULD HAVE MINIMUM ONE TWIST PER 25 MM AS APPLICABLE."
+      },
+      {
+        "name": "Specification 11",
+        "value": "11. SPACING BETWEEN ADJACENT SPLICES 25 MM MINIMUM."
+      },
+      {
+        "name": "Specification 12",
+        "value": "12. SPLICES MUST BE INSULATED WITH HOT MELT HEAT SHRINK."
+      },
+      {
+        "name": "Specification 13",
+        "value": "13. OVERLAP CONDUIT TO BE SELECTED: SCHLEMMER TWIN UNLESS OTHERWISE APPROVED BY ENGINEERING."
+      },
+      {
+        "name": "Specification 14",
+        "value": "14. FOR NON-SLIT CONDUIT TO BE USED: SCHLEMMER POLYFLEX UFW PP MOD UNLESS OTHERWISE SPECIFIED."
+      },
+      {
+        "name": "Specification 15",
+        "value": "15. CONDUITS TO BE CUT ON THE CREST."
+      },
+      {
+        "name": "Specification 16",
+        "value": "16. ALL OPEN CONDUIT END TO BE TEXTILE SPOT TAPED."
+      },
+      {
+        "name": "Specification 17",
+        "value": "17. APPLY HEAT SHRINK W/O GLUE OVER CONNECTOR END AND CONDUIT WHERE APPLICABLE."
+      },
+      {
+        "name": "Specification 18",
+        "value": "18. ATTACH FIR TREE TO MANIFOLD AS SHOWN. TAPE MANIFOLD SURFACE IF REQUIRED."
+      },
+      {
+        "name": "Specification 19",
+        "value": "19. APPLY NON-SLIT CONDUIT FOR BRANCHES COMING OUT OF MANIFOLD: 57M13339."
+      },
+      {
+        "name": "Specification 20",
+        "value": "20. WIRE FLR2X EXCHANGED AGAINST P3S WIRE ACCORDING TO SAME ISO6722 T3 REQUIREMENTS AS CONFIRMED PER JDZW PF."
+      },
+      {
+        "name": "Specification 21",
+        "value": "21. ADD LABEL BEHIND EVERY CONNECTOR WITH DESIGNATION."
+      },
+      {
+        "name": "Specification 22",
+        "value": "22. PLACE P-CLAMPS WITH ITS ROUND SIDE POINTING UPWARDS. IN A WAY THAT THE FLAT SIDE LAYS ON THE BOARD."
+      },
+      {
+        "name": "Assembly Title",
+        "value": "MOUNTING ASSEMBLY"
+      },
+      {
+        "name": "Assembly Title Translation 1",
+        "value": "MONTAGEZUSAMMENBAU"
+      },
+      {
+        "name": "Assembly Title Translation 2",
+        "value": "CONJUNTO MONTADO"
+      },
+      {
+        "name": "Location",
+        "value": "ILLINOIS 61265"
+      }
+    ]
+  },
+  "metadata": {
+    "file_name": "AXE105803_1758981955.pdf",
+    "file_size": 539763,
+    "processing_time_seconds": 17.877,
+    "confidence": 99.9,
+    "language": "English"
+  }
+}

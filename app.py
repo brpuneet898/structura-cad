@@ -56,7 +56,7 @@ if gemini_api_key:
 
     # Fast Flash model (keep for fields/metadata)
     model = genai.GenerativeModel(
-        'gemma-3-27b',
+        'gemini-2.0-flash-lite',
         generation_config=genai.types.GenerationConfig(
             temperature=0.1,
             top_p=0.8,
@@ -683,6 +683,38 @@ def upload_file():
         file.save(filepath)
 
         analysis_result = None
+
+        # === TEST-ONLY: Reuse existing analysis if present (by base name) ===
+        # This block allows skipping Gemini calls for files already analyzed (for testing/dev only)
+        # To remove: delete this block between the TEST-ONLY comments
+        try:
+            # Search for any <name>*.analysis.json in uploads
+            uploads_dir = app.config['UPLOAD_FOLDER']
+            base_pattern = f"{name}"  # without timestamp or ext
+            for fname in os.listdir(uploads_dir):
+                if fname.startswith(base_pattern) and fname.endswith('.analysis.json'):
+                    analysis_path = os.path.join(uploads_dir, fname)
+                    with open(analysis_path, 'r', encoding='utf-8') as f:
+                        analysis_artifact = json.load(f)
+                    logger.info(f"[TEST-ONLY] Reusing analysis artifact: {fname}")
+                    # Extract original file name (without timestamp or .analysis.json)
+                    # e.g. for 21989378_34_1757859580.pdf.analysis.json, return 21989378_34_1757859580.pdf
+                    base_file = fname[:-len('.analysis.json')]
+                    # If the file in uploads has a timestamp, keep it; else, fallback to uploaded name
+                    if os.path.exists(os.path.join(uploads_dir, base_file)):
+                        return_filename = base_file
+                    else:
+                        # fallback: reconstruct with extension
+                        return_filename = f"{name}{ext}"
+                    return jsonify({
+                        'success': True,
+                        'message': '[TEST-ONLY] Used cached analysis',
+                        'filename': return_filename,
+                        'analysis_file': fname
+                    }), 200
+        except Exception as e:
+            logger.warning(f"[TEST-ONLY] Analysis reuse failed: {e}")
+        # === END TEST-ONLY ===
 
         if ext.lower() == '.pdf':
             # Strategy 1: Try direct PDF analysis (best for Gemini 2.0)
