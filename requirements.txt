@@ -8,3 +8,4 @@ pdf2image
 opencv-python
 PyMuPDF
 pandas
+google-genai

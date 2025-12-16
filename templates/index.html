@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CDP - CAD Document Processor</title>
+    <title>StructuraCAD - CAD Document Processor</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       href="{{ url_for('static', filename='style.css') }}"
@@ -851,7 +851,7 @@
                   </svg>
                   Analysis Complete!
                 `;
-                
+
                 setTimeout(() => {
                   if (data.analysis_file) {
                     window.location.href = `/analysis/${data.filename}`;
