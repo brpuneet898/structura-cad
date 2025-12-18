@@ -75,22 +75,6 @@ class BOMModel(BaseModel):
 gemini_api_key = os.environ.get('GEMINI_API_KEY') or os.environ.get('GOOGLE_API_KEY')
 if gemini_api_key:
     client = genai.Client(api_key=gemini_api_key)
-    
-    # Configuration for field extraction (fast Flash model)
-    generation_config = types.GenerateContentConfig(
-        temperature=0.1,
-        top_p=0.8,
-        top_k=20,
-        max_output_tokens=4096,  # Increased for detailed extractions
-        response_mime_type="application/json",
-    )
-
-    # Configuration for BOM extraction
-    bom_generation_config = types.GenerateContentConfig(
-        temperature=0.0,
-        max_output_tokens=8192,  # Even more for BOM tables
-        response_mime_type="application/json",
-    )
 
     # Model names
     model = 'gemini-2.5-flash'
@@ -152,7 +136,25 @@ def extract_tables_with_pymupdf(pdf_path):
         logger.error(f"PyMuPDF table extraction failed: {e}")
     return tables
 
-def extract_bom_with_tables(file_path, chunk_size=50):
+def _call_gemini_with_retry(model, contents, config, max_retries=3):
+    """Calls the Gemini API with retry logic."""
+    for attempt in range(max_retries):
+        try:
+            response = client.models.generate_content(
+                model=model,
+                contents=contents,
+                config=config,
+            )
+            return response
+        except Exception as e:
+            logger.error(f"Error during Gemini API call (attempt {attempt + 1}/{max_retries}): {e}")
+            if attempt < max_retries - 1:
+                time.sleep(2 ** attempt)  # Exponential backoff
+            else:
+                logger.error(f"All retries failed for Gemini API call for model {model}.")
+                raise  # Re-raise the exception after all retries failed
+
+def extract_bom_with_tables(file_path, chunk_size=75):
     if not bom_model or not client:
         return {'bom_items': []}
 
@@ -163,7 +165,8 @@ def extract_bom_with_tables(file_path, chunk_size=50):
     all_bom_items = []
     raw_outputs = []
 
-    for t in tables:
+    for t in tables[:1]:
+
         rows = t["data"]
         logger.info(f"Processing page {t['page']} with {len(rows)} rows...")
 
@@ -189,20 +192,19 @@ def extract_bom_with_tables(file_path, chunk_size=50):
 
             try:
                 # Use structured output with Pydantic model
-                response = client.models.generate_content(
+                response = _call_gemini_with_retry(
                     model=bom_model,
                     contents=prompt,
-                    config=types.GenerateContentConfig(
-                        temperature=0.0,
-                        max_output_tokens=4096,
-                        response_mime_type="application/json",
-                        response_schema=BOMModel,  # Pass Pydantic model directly
-                    ),
+                    config={
+                            "response_mime_type": "application/json",
+                            "response_json_schema": BOMModel.model_json_schema(),
+                    }
                 )
                 
                 # Parse structured response
                 bom_result = BOMModel.model_validate_json(response.text)
                 items = [item.model_dump() for item in bom_result.bom_items]
+
                 raw_output = response.text
                 logger.info(f"BOM chunk processed: {len(items)} items (structured)")
                 
@@ -210,7 +212,7 @@ def extract_bom_with_tables(file_path, chunk_size=50):
                 logger.warning(f"Structured BOM output failed: {e}. Falling back to text parsing.")
                 # Fallback to text parsing
                 try:
-                    response = client.models.generate_content(
+                    response = _call_gemini_with_retry(
                         model=bom_model,
                         contents=prompt,
                         config=bom_generation_config,
@@ -219,6 +221,7 @@ def extract_bom_with_tables(file_path, chunk_size=50):
                     parsed = parse_bom_response(raw_output)
                     items = parsed.get("bom_items", [])
                     logger.info(f"BOM chunk processed: {len(items)} items (fallback)")
+                    
                 except Exception as e2:
                     logger.error(f"BOM extraction failed completely: {e2}")
                     items = []
@@ -240,6 +243,11 @@ def extract_bom_with_tables(file_path, chunk_size=50):
                     chunk_df.to_csv(out_csv, index=False)
 
             all_bom_items.extend(items)
+
+        # # --- TEMP: For demonstration, only process the first table ---
+        # logger.warning("TEMP: Processing only the first table for demonstration purposes.")
+        # break
+        # # --- END TEMP ---
 
     return {
         'bom_items': all_bom_items,
